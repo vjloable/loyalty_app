@@ -1,2 +1,2 @@
-# loyalty_app
-A non-POS integrated loyalty-based points and rewards system for group of businesses
+# LOYALTY APP
+A all-in-one mobile application loyalty-based points and rewards system for group of businesses
