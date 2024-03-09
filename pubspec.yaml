@@ -43,6 +43,9 @@ flutter:
     - icons/Icon-Facebook.svg
     - icons/Icon-Google.svg
     - icons/Icon-X.svg
+    - icons/Icon-Password.svg
+    - icons/Icon-Email.svg
+    - icons/Icon-MiniCalendar.svg
 
   # TODO: Add Poppins License to the License Registry
   fonts:
