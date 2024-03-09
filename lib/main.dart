@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loyalty_app/features/login_authentication/presentation/login_page.dart';
+import 'features/authentication/presentation/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Loyalty App',
       theme: ThemeData(fontFamily: 'Poppins'),
       debugShowCheckedModeBanner: false,
-      home: const LoginPage(),
+      home: const LoginScreen(),
     );
   }
 }
