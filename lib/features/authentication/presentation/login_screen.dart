@@ -1,15 +1,16 @@
-
 import 'package:flutter/material.dart';
-import 'package:loyalty_app/constants/vector_icons.dart';
+import 'package:loyalty_app/features/customers/presentation/home_screen.dart';
+import 'package:loyalty_app/utils/custom_icons.dart';
+import 'package:loyalty_app/utils/federated_icons.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,19 +69,27 @@ class _LoginPageState extends State<LoginPage> {
                             ],
                             borderRadius: BorderRadius.all(Radius.circular(40))
                           ),
-                          child: const TextField(
+                          child: TextField(
                             textAlign: TextAlign.center,
                             decoration: InputDecoration(
-                              border: OutlineInputBorder(
+                              border: InputBorder.none,
+                              focusedBorder: const OutlineInputBorder(
                                 borderRadius: BorderRadius.all(Radius.circular(40)),
                                 borderSide: BorderSide(color: Color(0xFFE2E2E2)),
                               ),
                               isCollapsed: false,
-                              contentPadding: EdgeInsets.fromLTRB(0, 5, 45, 5),
-                              prefixIcon: Icon(Icons.email_outlined),
-                              prefixIconColor: Color(0xFF515151),
+                              contentPadding: const EdgeInsets.fromLTRB(0, 5, 45, 5),
+                              prefixIcon: SizedBox(
+                                width: 45,
+                                height: 45,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15.0),
+                                  child: CustomIcons.email,
+                                ),
+                              ),
+                              prefixIconColor: const Color(0xFF515151),
                               hintText: 'Email Address',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                 color: Color(0xFF858585),
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
@@ -107,20 +116,23 @@ class _LoginPageState extends State<LoginPage> {
                             ],
                             borderRadius: BorderRadius.all(Radius.circular(40)),
                           ),
-                          child: const TextField(
+                          child: TextField(
                             textAlign: TextAlign.center,
                             decoration: InputDecoration(
-
-                              border: OutlineInputBorder(
+                              border: InputBorder.none,
+                              focusedBorder: const OutlineInputBorder(
                                 borderRadius: BorderRadius.all(Radius.circular(40)),
                                 borderSide: BorderSide(color: Color(0xFFE2E2E2)),
                               ),
                               isCollapsed: false,
-                              contentPadding: EdgeInsets.fromLTRB(0, 5, 45, 5),
-                              prefixIcon: Icon(Icons.lock_outlined),
-                              prefixIconColor: Color(0xFF515151),
+                              contentPadding: const EdgeInsets.fromLTRB(0, 5, 45, 5),
+                              prefixIcon: Padding(
+                                padding: const EdgeInsets.all(13.0),
+                                child: CustomIcons.password,
+                              ),
+                              prefixIconColor: const Color(0xFF515151),
                               hintText: 'Password',
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                 color: Color(0xFF858585),
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
@@ -151,7 +163,12 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const HomeScreen()),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFFFFFFF),
                           minimumSize: const Size(double.infinity, 45),
@@ -261,7 +278,7 @@ class _LoginPageState extends State<LoginPage> {
                             surfaceTintColor: Colors.transparent,
                             elevation: 4,
                           ),
-                          child: VectorIcons.google,
+                          child: FederatedIcons.google,
                         ),
                       ),
                       const SizedBox(width: 10),
@@ -277,7 +294,7 @@ class _LoginPageState extends State<LoginPage> {
                             surfaceTintColor: Colors.transparent,
                             elevation: 4,
                           ),
-                          child: VectorIcons.facebook,
+                          child: FederatedIcons.facebook,
                         ),
                       ),
                       const SizedBox(width: 10),
@@ -293,7 +310,7 @@ class _LoginPageState extends State<LoginPage> {
                             surfaceTintColor: Colors.transparent,
                             elevation: 4,
                           ),
-                          child: VectorIcons.x,
+                          child: FederatedIcons.x,
                         ),
                       ),
                     ],
