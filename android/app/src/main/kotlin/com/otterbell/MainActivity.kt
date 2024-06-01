@@ -1,4 +1,4 @@
-package com.example.loyalty_app
+package com.otterbell
 
 import io.flutter.embedding.android.FlutterActivity
 
