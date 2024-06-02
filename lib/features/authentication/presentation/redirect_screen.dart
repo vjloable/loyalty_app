@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:loyalty_app/features/customers/presentation/home_screen.dart';
+import 'package:loyalty_app/features/customers/presentation/parent_screen.dart';
 
 class RedirectScreen extends StatefulWidget {
   const RedirectScreen({super.key});
@@ -27,6 +27,7 @@ class _RedirectScreenState extends State<RedirectScreen> {
           "name": user.displayName,
           "permissions": 0,
           "isLocked": false,
+          "password": "",
         };
         _firebaseFirestore
             .collection("users")
@@ -48,7 +49,7 @@ class _RedirectScreenState extends State<RedirectScreen> {
         } else {
           switch (permissions) {
             case 0:
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomeScreen()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ParentScreen()));
               break;
           }
         }
