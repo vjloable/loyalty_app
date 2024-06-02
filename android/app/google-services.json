@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1091151422234",
+    "project_id": "loyalty-app-5c0f9",
+    "storage_bucket": "loyalty-app-5c0f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091151422234:android:d1f21fb00f125535d6c2a3",
+        "android_client_info": {
+          "package_name": "com.otterbell"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDX4YKKrGbCKQGZiM-43fwMZ9FnaWWmtRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
