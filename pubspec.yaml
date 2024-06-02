@@ -30,11 +30,18 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.10+1
+  firebase_core: ^2.27.0
+  google_sign_in: ^6.2.1
+  firebase_auth: ^4.17.8
+  cloud_firestore: ^4.15.8
+  dotted_border: ^2.1.0
+  flutter_flip_card: ^0.0.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  change_app_package_name: ^1.1.0
 
 flutter:
   uses-material-design: true
@@ -46,6 +53,15 @@ flutter:
     - icons/Icon-Password.svg
     - icons/Icon-Email.svg
     - icons/Icon-MiniCalendar.svg
+    - icons/Icon_Home.svg
+    - icons/Icon-Wallet.svg
+    - icons/Icon-Discover.svg
+    - icons/Icon-Profile.svg
+    - icons/Icon-DefaultUser.svg
+    - icons/Icon-Info.svg
+    - icons/Icon-Loyalty-App-TopBar.svg
+    - icons/Icon-Loyalty-Meter-Bar.svg
+    - cards/Cards_White.svg
 
   # TODO: Add Poppins License to the License Registry
   fonts:
