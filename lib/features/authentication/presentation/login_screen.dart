@@ -3,6 +3,8 @@ import 'package:loyalty_app/features/customers/presentation/home_screen.dart';
 import 'package:loyalty_app/utils/custom_icons.dart';
 import 'package:loyalty_app/utils/federated_icons.dart';
 
+import '../authentication_service.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -29,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    "Loyalty App",
+                    "Otter Bell",
                     style: TextStyle(
                       color: Color(0xFF0D0D0D),
                       fontWeight: FontWeight.bold,
@@ -69,32 +71,44 @@ class _LoginScreenState extends State<LoginScreen> {
                             ],
                             borderRadius: BorderRadius.all(Radius.circular(40))
                           ),
-                          child: TextField(
-                            textAlign: TextAlign.center,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              focusedBorder: const OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(40)),
-                                borderSide: BorderSide(color: Color(0xFFE2E2E2)),
-                              ),
-                              isCollapsed: false,
-                              contentPadding: const EdgeInsets.fromLTRB(0, 5, 45, 5),
-                              prefixIcon: SizedBox(
-                                width: 45,
-                                height: 45,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(15.0),
-                                  child: CustomIcons.email,
+                          child: Stack(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.transparent,
+                                  borderRadius: BorderRadius.circular(40),
+                                  border: Border.all(color: const Color(0xFFE2E2E2))
                                 ),
                               ),
-                              prefixIconColor: const Color(0xFF515151),
-                              hintText: 'Email Address',
-                              hintStyle: const TextStyle(
-                                color: Color(0xFF858585),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
+                              TextField(
+                                textAlign: TextAlign.center,
+                                textAlignVertical: TextAlignVertical.center,
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  focusedBorder: const OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(40)),
+                                    borderSide: BorderSide(color: Color(0xFFE2E2E2)),
+                                  ),
+                                  isCollapsed: false,
+                                  contentPadding: const EdgeInsets.fromLTRB(0, 5, 45, 5),
+                                  prefixIcon: SizedBox(
+                                    width: 45,
+                                    height: 45,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(15.0),
+                                      child: CustomIcons.email,
+                                    ),
+                                  ),
+                                  prefixIconColor: const Color(0xFF515151),
+                                  hintText: 'Email Address',
+                                  hintStyle: const TextStyle(
+                                    color: Color(0xFF858585),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
                               ),
-                            ),
+                            ],
                           ),
                         ),
                       ),
@@ -116,28 +130,41 @@ class _LoginScreenState extends State<LoginScreen> {
                             ],
                             borderRadius: BorderRadius.all(Radius.circular(40)),
                           ),
-                          child: TextField(
-                            textAlign: TextAlign.center,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              focusedBorder: const OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(40)),
-                                borderSide: BorderSide(color: Color(0xFFE2E2E2)),
+                          child: Stack(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.circular(40),
+                                    border: Border.all(color: const Color(0xFFE2E2E2))
+                                ),
                               ),
-                              isCollapsed: false,
-                              contentPadding: const EdgeInsets.fromLTRB(0, 5, 45, 5),
-                              prefixIcon: Padding(
-                                padding: const EdgeInsets.all(13.0),
-                                child: CustomIcons.password,
+                              TextField(
+                                textAlign: TextAlign.center,
+                                textAlignVertical: TextAlignVertical.center,
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  focusedBorder: const OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(40)),
+                                    borderSide: BorderSide(color: Color(0xFFE2E2E2)),
+                                  ),
+                                  isCollapsed: false,
+                                  contentPadding: const EdgeInsets.fromLTRB(0, 5, 45, 5),
+                                  prefixIcon: Padding(
+                                    padding: const EdgeInsets.all(13.0),
+                                    child: CustomIcons.password,
+                                  ),
+                                  prefixIconColor: const Color(0xFF515151),
+                                  hintText: 'Password',
+                                  hintStyle: const TextStyle(
+                                    color: Color(0xFF858585),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
                               ),
-                              prefixIconColor: const Color(0xFF515151),
-                              hintText: 'Password',
-                              hintStyle: const TextStyle(
-                                color: Color(0xFF858585),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
+                            ],
                           ),
                         ),
                       ),
@@ -270,7 +297,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 45,
                         height: 45,
                         child: ElevatedButton(
-                          onPressed: () {}, // TODO: add Google authentication
+                          onPressed: () {
+                            AuthenticationService.signInWithGoogle();
+                          },
                           style: ElevatedButton.styleFrom(
                             shape: const CircleBorder(),
                             padding: EdgeInsets.zero,
