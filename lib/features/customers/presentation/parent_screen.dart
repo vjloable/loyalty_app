@@ -17,26 +17,29 @@ class _ParentScreenState extends State<ParentScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: const Color(0xFFF9F9F9),
-      extendBody: true,
-      extendBodyBehindAppBar: true,
-      appBar: const TopAppBar(height: 105),
-      body: AnimatedBuilder(
-          animation: pageStateHandler,
-          builder: (context, child) {
-            return pageStateHandler.currentPage == 0
-                ? const HomeScreen()
-                : pageStateHandler.currentPage == 1
-                ? const Placeholder()
-                : pageStateHandler.currentPage == 2
-                ? const Placeholder()
-                : pageStateHandler.currentPage == 3
-                ? const AccountScreen() : const Placeholder();
-          },
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: const Color(0xFFF9F9F9),
+        extendBody: true,
+        extendBodyBehindAppBar: true,
+        appBar: const TopAppBar(height: 105),
+        body: AnimatedBuilder(
+            animation: pageStateHandler,
+            builder: (context, child) {
+              return pageStateHandler.currentPage == 0
+                  ? const HomeScreen()
+                  : pageStateHandler.currentPage == 1
+                  ? const Placeholder()
+                  : pageStateHandler.currentPage == 2
+                  ? const Placeholder()
+                  : pageStateHandler.currentPage == 3
+                  ? const AccountScreen() : const Placeholder();
+            },
+        ),
+        bottomNavigationBar: CustomBottomAppBar(pageStateHandler: pageStateHandler),
       ),
-      bottomNavigationBar: CustomBottomAppBar(pageStateHandler: pageStateHandler),
     );
   }
 }
