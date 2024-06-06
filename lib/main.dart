@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Loyalty App',
-      theme: ThemeData(fontFamily: 'Poppins'),
+      theme: ThemeData(fontFamily: 'Poppins', colorSchemeSeed: const Color(0xFF6590FF)),
       debugShowCheckedModeBanner: false,
       home: AuthenticationService.handleAuthState(),
     );
