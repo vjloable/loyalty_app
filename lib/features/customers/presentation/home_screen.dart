@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,18 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   User user = FirebaseAuth.instance.currentUser!;
+  final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
   final flipController = FlipCardController();
+
+  Future<String?> getDisplayName() {
+    final userDocRef = firebaseFirestore.collection("users").doc(user.uid);
+    return userDocRef.get().then((value) {
+      var userData = (value.data() as Map<String, dynamic>);
+      String? name = userData["name"];
+      return name;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,26 +53,71 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            SizedBox(
-              width: double.infinity,
-              height: 235,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                child: GestureDetector(
-                  onTap: () {
-                    flipController.flipcard();
-                  },
-                  child: FlipCard(
-                    animationDuration: const Duration(milliseconds: 300),
-                    axis: FlipAxis.horizontal,
-                    frontWidget: CardTier(card: Cards.white, name: user.displayName),
-                    backWidget: const Placeholder(),
-                    controller: flipController,
-                    rotateSide: RotateSide.left,
-                    onTapFlipping: true,
+            Stack(
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  height: 235,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                    child: GestureDetector(
+                      onTap: () {
+                        flipController.flipcard();
+                      },
+                      child: FutureBuilder(
+                          future: getDisplayName(),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              if (snapshot.data!.isNotEmpty) {
+                                return FlipCard(
+                                  animationDuration: const Duration(milliseconds: 300),
+                                  axis: FlipAxis.vertical,
+                                  frontWidget: CardTier(card: Cards.white, flipped: true, displayName: snapshot.data, uid: user.uid),
+                                  backWidget: CardTier(card: Cards.white, flipped: false, displayName: snapshot.data, uid: user.uid),
+                                  controller: flipController,
+                                  rotateSide: RotateSide.left,
+                                );
+                              }
+                            } else if (snapshot.hasError) {
+                              return const Center(
+                                child: LinearProgressIndicator(
+                                  color: Color(0xFFFF7373),
+                                  value: null,
+                                ),
+                              );
+                            }
+                            return const Center(
+                              child: LinearProgressIndicator(
+                                color: Color(0xFF6590FF),
+                                value: null,
+                              ),
+                            );
+                          },
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                const Positioned(
+                  right: 10,
+                  height: 235,
+                  child: RotatedBox(
+                    quarterTurns: 3,
+                    child: Column(
+                      children: [
+                        SizedBox(width: 30, child: Divider(color: Color(0xFF6590FF), thickness: 3.0)),
+                        Text(
+                          "FLIP CARD",
+                          style: TextStyle(
+                            color: Color(0xFF4E4E4E),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(
               width: double.infinity,
