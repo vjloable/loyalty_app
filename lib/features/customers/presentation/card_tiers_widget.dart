@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
-class CardTier extends StatelessWidget {
+class CardTier extends StatefulWidget {
   final Widget card;
-  final String? name;
-  const CardTier({super.key, required this.card, required this.name});
+  final bool flipped;
+  final String? displayName;
+  final String uid;
+  const CardTier({super.key, required this.card, required this.displayName, this.flipped = false, required this.uid});
 
+  @override
+  State<CardTier> createState() => _CardTierState();
+}
+
+class _CardTierState extends State<CardTier> {
   @override
   Widget build(BuildContext context) {
     return Material(
       elevation: 5,
       borderRadius: const BorderRadius.all(Radius.circular(20)),
-      child: Stack(
+      child: widget.flipped ? Stack(
         children: [
-          card,
+          widget.card,
           SizedBox(
             height: double.infinity,
             width: double.infinity,
@@ -24,7 +32,7 @@ class CardTier extends StatelessWidget {
                 children: [
                   const Spacer(),
                   Text(
-                    name??"",
+                    widget.displayName??"",
                     style: const TextStyle(
                       color: Color(0xFF515151),
                       fontWeight: FontWeight.w300,
@@ -56,6 +64,22 @@ class CardTier extends StatelessWidget {
             ),
           ),
         ],
+      ) :
+      Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white,
+        ),
+        child: Center(
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: QrImageView(
+              data: widget.uid,
+              version: QrVersions.auto,
+              size: 200.0,
+            ),
+          ),
+        ),
       ),
     );
   }
