@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:loyalty_app/features/authentication/presentation/create_display_name_page.dart';
 import 'package:loyalty_app/features/customers/presentation/parent_screen.dart';
 
 class RedirectScreen extends StatefulWidget {
@@ -27,7 +28,6 @@ class _RedirectScreenState extends State<RedirectScreen> {
           "name": user.displayName,
           "permissions": 0,
           "isLocked": false,
-          "password": "",
         };
         _firebaseFirestore
             .collection("users")
@@ -44,13 +44,18 @@ class _RedirectScreenState extends State<RedirectScreen> {
         var accParameters = (value.data() as Map<String, dynamic>);
         int permissions = accParameters["permissions"];
         bool isLocked = accParameters["isLocked"];
+        bool hasNoDisplayName = accParameters["name"] == null;
         if (isLocked) {
 
         } else {
-          switch (permissions) {
-            case 0:
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ParentScreen()));
-              break;
+          if (hasNoDisplayName) {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => CreateDisplayNamePage(userDocReference: userDocRef)));
+          } else {
+            switch (permissions) {
+              case 0:
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ParentScreen()));
+                break;
+            }
           }
         }
       });
@@ -74,7 +79,7 @@ class _RedirectScreenState extends State<RedirectScreen> {
           height: 40,
           width: 40,
           child: CircularProgressIndicator(
-            color: Color(0xFF225DB6),
+            color: Color(0xFF6590FF),
             value: null,
           ),
         ),
