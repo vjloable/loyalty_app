@@ -34,35 +34,49 @@ class AuthenticationService{
     FirebaseAuth.instance.signOut();
   }
 
-  static signUpWithEmailAndPassword(String emailAddress, String password) async {
+  static Future<(String, dynamic)> signUpWithEmailAndPassword(String emailAddress, String password) async {
+    (String, dynamic) response = ("fail", null);
     try {
-      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      UserCredential credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailAddress,
         password: password,
       );
+      response = ("success", credential);
+      return response;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
+        String message = 'The password provided is too weak.';
+        response = ("fail", message);
       } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
+        String message = 'The account already exists for that email.';
+        response = ("fail", message);
+      } else {
+        response = ("fail", "${e.code}: ${e.message}");
       }
-    } catch (e) {
-      print(e);
+      return response;
     }
   }
 
-  static signInWithEmailAndPassword(String emailAddress, String password) async {
+  static Future<(String, dynamic)> signInWithEmailAndPassword(String emailAddress, String password) async {
+    (String, dynamic) response = ("fail", null);
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      UserCredential credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailAddress,
           password: password
       );
+      response = ("success", credential);
+      return response;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('No user found for that email.');
+        String message = 'No user found for that email.';
+        response = ("fail", message);
       } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
+        String message = 'Wrong password provided for that user.';
+        response = ("fail", message);
+      } else {
+        response = ("fail", "${e.code}: ${e.message}");
       }
+      return response;
     }
   }
 
