@@ -1,13 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:loyalty_app/features/authentication/data/user_repository.dart';
 
 import '../../customers/presentation/parent_screen.dart';
-import '../authentication_service.dart';
+import '../application/authentication_service.dart';
+import '../domain/user_model.dart';
 
 class CreateDisplayNamePage extends StatefulWidget {
-  final DocumentReference<Map<String, dynamic>> userDocReference;
-  const CreateDisplayNamePage({super.key, required this.userDocReference});
+  final UserModel userModel;
+  const CreateDisplayNamePage({super.key, required this.userModel});
 
   @override
   State<CreateDisplayNamePage> createState() => _CreateDisplayNamePageState();
@@ -127,7 +128,7 @@ class _CreateDisplayNamePageState extends State<CreateDisplayNamePage> {
                           onPressed: () {
                             if (_createDisplayNameFormKey.currentState!.validate()) {
                               AuthenticationService.changeDisplayName(user, displayNameTextEditingController.text);
-                              widget.userDocReference.update({'name':displayNameTextEditingController.text});
+                              UserRepository.setUserDocName(widget.userModel, displayNameTextEditingController.text);
                               Navigator.pop(context);
                               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ParentScreen()));
                             }
