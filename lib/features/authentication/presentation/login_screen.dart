@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:loyalty_app/features/authentication/presentation/create_display_name_page.dart';
 import 'package:loyalty_app/features/authentication/presentation/register_screen.dart';
-import 'package:loyalty_app/utils/custom_icons.dart';
-import 'package:loyalty_app/utils/federated_icons.dart';
 
-import '../authentication_service.dart';
+import '../../../utils/custom_icons.dart';
+import '../../../utils/federated_icons.dart';
+import '../application/authentication_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -18,6 +17,23 @@ class _LoginScreenState extends State<LoginScreen> {
 
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController passwordTextEditingController = TextEditingController();
+
+  bool isValidatingLogin = false;
+
+  void showValidationResponse(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message, style: const TextStyle(color: Color(0xFFFF7373))),
+        behavior: SnackBarBehavior.floating,
+        dismissDirection: DismissDirection.none,
+        margin: EdgeInsets.only(
+            bottom: MediaQuery.of(context).size.height - 100,
+            right: 20,
+            left: 20
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -230,13 +246,23 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         ElevatedButton(
-                          onPressed: () {
+                          onPressed: isValidatingLogin ? null : () async {
+                            (String, dynamic) validation = ("fail", "");
+                            setState(() {
+                              isValidatingLogin = true;
+                            });
                             if (_loginFormKey.currentState!.validate()) {
-                              AuthenticationService.signInWithEmailAndPassword(
+                              validation = await AuthenticationService.signInWithEmailAndPassword(
                                   emailTextEditingController.text,
                                   passwordTextEditingController.text
                               );
                             }
+                            if (validation.$1 == "fail" && validation.$2 != "") {
+                              showValidationResponse(validation.$2);
+                            }
+                            setState(() {
+                              isValidatingLogin = false;
+                            });
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFFFFFFFF),
@@ -248,15 +274,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             elevation: 4,
                           ),
-                          child: const Text(
-                            "LOG IN",
-                            style: TextStyle(
-                              color: Color(0xFF515151),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        )
+                          child: isValidatingLogin
+                              ? const SizedBox(height: 20, width: 20, child: CircularProgressIndicator(color: Color(0xFF6590FF)))
+                              : const Text("LOG IN", style: TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w600))
+                        ),
                       ],
                     ),
                   ),
@@ -396,5 +417,12 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    emailTextEditingController.dispose();
+    passwordTextEditingController.dispose();
+    super.dispose();
   }
 }
