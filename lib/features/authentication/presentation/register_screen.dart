@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../utils/custom_icons.dart';
-import '../authentication_service.dart';
+import '../application/authentication_service.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -16,6 +16,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController passwordTextEditingController = TextEditingController();
   TextEditingController confirmationPasswordTextEditingController = TextEditingController();
+
+  bool isValidatingRegister = false;
+
+  void showValidationResponse(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message, style: const TextStyle(color: Color(0xFFFF7373))),
+        behavior: SnackBarBehavior.floating,
+        dismissDirection: DismissDirection.none,
+        margin: EdgeInsets.only(
+            bottom: MediaQuery.of(context).size.height - 100,
+            right: 20,
+            left: 20
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -289,13 +306,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         ),
                         ElevatedButton(
-                          onPressed: () {
+                          onPressed: isValidatingRegister ? null : () async {
+                            (String, dynamic) validation = ("fail", "");
+                            setState(() {
+                              isValidatingRegister = true;
+                            });
                             if (_registerFormKey.currentState!.validate()) {
-                              AuthenticationService.signUpWithEmailAndPassword(
+                              validation = await AuthenticationService.signUpWithEmailAndPassword(
                                   emailTextEditingController.text,
                                   passwordTextEditingController.text
                               );
                             }
+                            if (validation.$1 == "fail" && validation.$2 != "") {
+                              showValidationResponse(validation.$2);
+                            }
+                            setState(() {
+                              isValidatingRegister = false;
+                            });
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFFFFFFFF),
@@ -307,14 +334,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             elevation: 4,
                           ),
-                          child: const Text(
-                            "REGISTER",
-                            style: TextStyle(
-                              color: Color(0xFF515151),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                          child: isValidatingRegister
+                              ? const SizedBox(height: 20, width: 20, child: CircularProgressIndicator(color: Color(0xFF6590FF)))
+                              : const Text("REGISTER", style: TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w600)),
                         )
                       ],
                     ),
@@ -384,5 +406,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    emailTextEditingController.dispose();
+    passwordTextEditingController.dispose();
+    confirmationPasswordTextEditingController.dispose();
+    super.dispose();
   }
 }
