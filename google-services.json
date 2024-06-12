@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "1091151422234",
+    "project_id": "loyalty-app-5c0f9",
+    "storage_bucket": "loyalty-app-5c0f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091151422234:android:d1f21fb00f125535d6c2a3",
+        "android_client_info": {
+          "package_name": "com.otterbell"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1091151422234-eq1i1ncmhtu1quvekie0k9gfhr5or8vi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.otterbell",
+            "certificate_hash": "ab446fd26072a2c93f21556160cb7cc14f03f582"
+          }
+        },
+        {
+          "client_id": "1091151422234-md4j4p3kasdct7c2fedbn2dvo02v6v47.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.otterbell",
+            "certificate_hash": "a8cd8f69b0718bca8ef0e04137a0f83f2f09dfe9"
+          }
+        },
+        {
+          "client_id": "1091151422234-iapsh3ot2bdq3vcoa2mq5nr9maacj56t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDX4YKKrGbCKQGZiM-43fwMZ9FnaWWmtRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1091151422234-iapsh3ot2bdq3vcoa2mq5nr9maacj56t.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1091151422234-65mbutn17ksoqk0odliauj9fidid7gia.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.loyaltyApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
