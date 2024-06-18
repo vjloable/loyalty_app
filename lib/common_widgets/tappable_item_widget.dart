@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 
 class TappableItem extends StatefulWidget {
   final Color? backgroundColor;
+  final Color? tappedColor;
   final Color? textColor;
   final String text;
   final Widget? icon;
   final Function()? onTap;
-  const TappableItem({super.key, this.backgroundColor, this.textColor, this.text = "", this.icon, this.onTap});
+  const TappableItem({super.key, this.backgroundColor, this.textColor, this.text = "", this.icon, this.onTap, this.tappedColor});
 
   @override
   State<TappableItem> createState() => _TappableItemState();
@@ -22,6 +23,7 @@ class _TappableItemState extends State<TappableItem> {
         shape: const Border(bottom: BorderSide(color: Color(0x80959595))),
         child: InkWell(
           onTap: widget.onTap,
+          splashColor: widget.tappedColor??Colors.black.withOpacity(0.1),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Row(
