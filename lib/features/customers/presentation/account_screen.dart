@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/common_widgets/tappable_item_widget.dart';
 import 'package:loyalty_app/features/authentication/application/authentication_service.dart';
+import 'package:loyalty_app/utils/custom_icons.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -29,11 +30,11 @@ class _AccountScreenState extends State<AccountScreen> {
               child: CircleAvatar(radius: 45, backgroundColor: Color(0x266590FF)),
             ),
             const SizedBox(height: 20),
-            const SizedBox(
+            SizedBox(
               height: 30,
               child: Text(
-                "Display Name",
-                style: TextStyle(
+                user.displayName??"",
+                style: const TextStyle(
                   color: Color(0xFF4E4E4E),
                   fontSize: 20,
                   fontWeight: FontWeight.w300,
@@ -62,7 +63,7 @@ class _AccountScreenState extends State<AccountScreen> {
                     ),
                   ),
                 ),
-                TappableItem(text: "Dark Mode", onTap: () {}),
+                TappableItem(icon: CustomIcons.dark_mode, text: "Dark Mode", onTap: () {}),
               ],
             ),
             const SizedBox(height: 20),
@@ -71,7 +72,7 @@ class _AccountScreenState extends State<AccountScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: double.infinity,
                     height: 35,
                     child: Padding(
@@ -91,13 +92,15 @@ class _AccountScreenState extends State<AccountScreen> {
                   ),
                   Column(
                     children: [
-                      TappableItem(text: "User Profile", onTap: () {}),
-                      TappableItem(text: "Security", onTap: () {}),
-                      TappableItem(text: "Link to Socials", onTap: () {}),
+                      TappableItem(icon: CustomIcons.user_profile, text: "User Profile", onTap: () {}),
+                      TappableItem(icon: CustomIcons.security, text: "Security", onTap: () {}),
+                      TappableItem(icon: CustomIcons.link_to_socials, text: "Link to Socials", onTap: () {}),
                       TappableItem(
+                        icon: CustomIcons.authorized_access,
                         text: "Authorized Access",
-                        backgroundColor: Color(0xFFFFEFEF),
-                        textColor: Color(0xFFFF7373),
+                        backgroundColor: const Color(0xFFFFEFEF),
+                        tappedColor: const Color(0xFFFF7373).withOpacity(0.3),
+                        textColor: const Color(0xFFFF7373),
                         onTap: () {},
                       ),
                     ],
