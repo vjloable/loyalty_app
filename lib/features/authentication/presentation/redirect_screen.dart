@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/features/authentication/data/user_repository.dart';
@@ -15,8 +14,6 @@ class RedirectScreen extends StatefulWidget {
 }
 
 class _RedirectScreenState extends State<RedirectScreen> {
-  final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
-
   void _goToRedirection(UserModel userModel) {
     if (userModel.isLocked) {
       //TODO: Add a account locked screen
@@ -35,7 +32,6 @@ class _RedirectScreenState extends State<RedirectScreen> {
 
   void _checkUser() {
     User user = FirebaseAuth.instance.currentUser!;
-
     UserRepository.getUserDoc(user).then((userModel) {
       if (userModel == null) {
         UserModel proxyUserModel = UserRepository.setInitialUserDoc(user);
