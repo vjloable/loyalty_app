@@ -57,27 +57,5 @@ class UserRepository {
     );
     UserModel? userModel = (await userModelDocRef.get()).data();
     return userModel;
-    //     .then((userModelDoc) async {
-    //   if (!userModelDoc.exists) {
-    //
-    //   }
-    //   else {
-    //     UserModel userModel = userModelDoc.data()!;
-    //     if (userModel.isLocked) {
-    //     } else {
-    //       if (userModel.name == null) {
-    //
-    //         // Navigator.of(context).push(MaterialPageRoute(builder: (context) => CreateDisplayNamePage(userDocReference: userDocRef)));
-    //       } else {
-    //         switch (userModel.permissions) {
-    //           case 0:
-    //
-    //             // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ParentScreen()));
-    //             break;
-    //         }
-    //       }
-    //     }
-    //   }
-    // });
   }
 }
