@@ -29,8 +29,8 @@ class UserRepository {
     });
   }
 
-  static UserModel setInitialUserDoc(User user) {
-    UserModel userModel = UserModel(email: user.email, uid: user.uid);
+  static UserModel initialize(User user) {
+    UserModel userModel = UserModel(email: user.email, uid: user.uid, name: user.displayName);
     _firebaseFirestore
         .collection("users")
         .withConverter(
