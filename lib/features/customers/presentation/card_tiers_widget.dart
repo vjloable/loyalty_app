@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
+import '../domain/customer_model.dart';
+
 class CardTier extends StatefulWidget {
   final Widget card;
   final bool flipped;
-  final String? displayName;
-  final String uid;
-  const CardTier({super.key, required this.card, required this.displayName, this.flipped = false, required this.uid});
+  final Customer customer;
+  const CardTier({super.key, required this.card, this.flipped = false, required this.customer});
 
   @override
   State<CardTier> createState() => _CardTierState();
@@ -32,7 +33,7 @@ class _CardTierState extends State<CardTier> {
                 children: [
                   const Spacer(),
                   Text(
-                    widget.displayName??"",
+                    widget.customer.name??"",
                     style: const TextStyle(
                       color: Color(0xFF515151),
                       fontWeight: FontWeight.w300,
@@ -42,9 +43,9 @@ class _CardTierState extends State<CardTier> {
                   const SizedBox(
                     height: 25,
                   ),
-                  const Text(
-                    '1030.50',
-                    style: TextStyle(
+                  Text(
+                    "${widget.customer.points}",
+                    style: const TextStyle(
                       color: Color(0xFF515151),
                       fontWeight: FontWeight.w600,
                       fontSize: 22,
@@ -74,7 +75,7 @@ class _CardTierState extends State<CardTier> {
           child: FittedBox(
             fit: BoxFit.scaleDown,
             child: QrImageView(
-              data: widget.uid,
+              data: widget.customer.uid,
               version: QrVersions.auto,
               size: 200.0,
             ),
