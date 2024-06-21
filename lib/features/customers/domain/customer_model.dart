@@ -1,16 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../authentication/domain/user_model.dart';
-
 class Customer {
   final String? name;
+  final String uid;
   final int points;
-  final DocumentReference<UserModel> userRef;
 
   Customer({
     this.name = "",
+    required this.uid,
     this.points = 0,
-    required this.userRef
   });
 
   factory Customer.fromFirestore(
@@ -20,16 +18,16 @@ class Customer {
     final data = snapshot.data();
     return Customer(
       name: data?['name'] ?? "",
+      uid: data?['uid'],
       points: data?['points'],
-      userRef: (data?['userRef'] as DocumentReference<UserModel>),
     );
   }
 
   Map<String, dynamic> toFirestore() {
     return {
       if (name != null) "name": name else "name": "",
+      "uid": uid,
       "points": points,
-      "userRef": userRef,
     };
   }
 }
