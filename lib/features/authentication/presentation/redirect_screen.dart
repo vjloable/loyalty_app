@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:loyalty_app/features/authentication/data/user_repository.dart';
-import 'package:loyalty_app/features/authentication/presentation/create_display_name_page.dart';
-import 'package:loyalty_app/features/customers/presentation/parent_screen.dart';
+import 'package:loyalty_app/features/customers/data/customer_repository.dart';
 
+import '../../customers/presentation/parent_screen.dart';
+import '../data/user_repository.dart';
 import '../domain/user_model.dart';
+import 'create_display_name_page.dart';
 
 class RedirectScreen extends StatefulWidget {
   const RedirectScreen({super.key});
@@ -32,9 +33,10 @@ class _RedirectScreenState extends State<RedirectScreen> {
 
   void _checkUser() {
     User user = FirebaseAuth.instance.currentUser!;
-    UserRepository.getUserDoc(user).then((userModel) {
+    UserRepository.getUserDoc(user).then((userModel) async {
       if (userModel == null) {
-        UserModel proxyUserModel = UserRepository.setInitialUserDoc(user);
+        UserModel proxyUserModel = UserRepository.initialize(user);
+        CustomerRepository.initialize(user);
         _goToRedirection(proxyUserModel);
       }
       else {
