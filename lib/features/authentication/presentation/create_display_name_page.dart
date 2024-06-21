@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/features/authentication/data/user_repository.dart';
+import 'package:loyalty_app/features/customers/data/customer_repository.dart';
 
 import '../../customers/presentation/parent_screen.dart';
 import '../application/authentication_service.dart';
@@ -129,6 +130,7 @@ class _CreateDisplayNamePageState extends State<CreateDisplayNamePage> {
                             if (_createDisplayNameFormKey.currentState!.validate()) {
                               AuthenticationService.changeDisplayName(user, displayNameTextEditingController.text);
                               UserRepository.setUserDocName(widget.userModel, displayNameTextEditingController.text);
+                              CustomerRepository.setName(user, displayNameTextEditingController.text);
                               Navigator.pop(context);
                               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ParentScreen()));
                             }
