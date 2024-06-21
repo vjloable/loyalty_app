@@ -1,10 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_flip_card/flutter_flip_card.dart';
+import 'package:loyalty_app/features/customers/data/customer_repository.dart';
 import 'package:loyalty_app/features/customers/presentation/meter_bar_widget.dart';
 import 'package:loyalty_app/utils/cards.dart';
+import '../domain/customer_model.dart';
 import 'card_tiers_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,18 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   User user = FirebaseAuth.instance.currentUser!;
-  final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
   final flipController = FlipCardController();
-
-  Future<String?> getDisplayName() {
-    final userDocRef = firebaseFirestore.collection("users").doc(user.uid);
-    return userDocRef.get().then((value) {
-      var userData = (value.data() as Map<String, dynamic>);
-      String? name = userData["name"];
-      return name;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,31 +55,38 @@ class _HomeScreenState extends State<HomeScreen> {
                         flipController.flipcard();
                       },
                       child: FutureBuilder(
-                          future: getDisplayName(),
+                          future: CustomerRepository.get(user),
                           builder: (context, snapshot) {
                             if (snapshot.hasData) {
-                              if (snapshot.data!.isNotEmpty) {
+                              if (snapshot.data != null) {
+                                Customer customer = snapshot.data!;
                                 return FlipCard(
                                   animationDuration: const Duration(milliseconds: 300),
                                   axis: FlipAxis.vertical,
-                                  frontWidget: CardTier(card: Cards.white, flipped: true, displayName: snapshot.data, uid: user.uid),
-                                  backWidget: CardTier(card: Cards.white, flipped: false, displayName: snapshot.data, uid: user.uid),
+                                  frontWidget: CardTier(card: Cards.white, flipped: true, customer: customer),
+                                  backWidget: CardTier(card: Cards.white, flipped: false, customer: customer),
                                   controller: flipController,
                                   rotateSide: RotateSide.left,
                                 );
                               }
                             } else if (snapshot.hasError) {
                               return const Center(
-                                child: LinearProgressIndicator(
-                                  color: Color(0xFFFF7373),
-                                  value: null,
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 10),
+                                  child: LinearProgressIndicator(
+                                    color: Color(0xFFFF7373),
+                                    value: null,
+                                  ),
                                 ),
                               );
                             }
                             return const Center(
-                              child: LinearProgressIndicator(
-                                color: Color(0xFF6590FF),
-                                value: null,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                child: LinearProgressIndicator(
+                                  color: Color(0xFF6590FF),
+                                  value: null,
+                                ),
                               ),
                             );
                           },
