@@ -68,6 +68,8 @@ flutter:
     - icons/Icon-UserProfile.svg
     - icons/Icon-LinkToSocials.svg
     - icons/Icon-AuthorizedAccess.svg
+    - icons/Icon-BackArrow.svg
+    - icons/Icon-AuthorizedAccessHero.svg
     - cards/Cards_White.svg
 
   # TODO: Add Poppins License to the License Registry
