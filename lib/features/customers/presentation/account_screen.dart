@@ -16,7 +16,6 @@ class AccountScreen extends StatefulWidget {
 }
 
 class _AccountScreenState extends State<AccountScreen> {
-  User user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +36,7 @@ class _AccountScreenState extends State<AccountScreen> {
             SizedBox(
               height: 30,
               child: Text(
-                user.displayName??"",
+                widget.customer.name??"",
                 style: const TextStyle(
                   color: Color(0xFF4E4E4E),
                   fontSize: 20,
@@ -99,16 +98,31 @@ class _AccountScreenState extends State<AccountScreen> {
                       TappableItem(icon: CustomIcons.user_profile, text: "User Profile", onTap: () {}),
                       TappableItem(icon: CustomIcons.security, text: "Security", onTap: () {}),
                       TappableItem(icon: CustomIcons.link_to_socials, text: "Link to Socials", onTap: () {}),
-                      TappableItem(
+                      widget.customer.tier > 0 ? TappableItem(
                         icon: CustomIcons.authorized_access,
                         text: "Authorized Access",
                         backgroundColor: const Color(0xFFFFEFEF),
                         tappedColor: const Color(0xFFFF7373).withOpacity(0.3),
                         textColor: const Color(0xFFFF7373),
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AuthorizedAccessScreen()));
+                          Navigator.of(context).push(
+                            PageRouteBuilder(
+                              pageBuilder: (context, animation, secondaryAnimation) => const AuthorizedAccessScreen(),
+                              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                                var begin = const Offset(1.0, 0.0);
+                                var end = Offset.zero;
+                                var curve = Curves.fastEaseInToSlowEaseOut;
+                                var tween = Tween(begin: begin, end: end)
+                                    .chain(CurveTween(curve: curve));
+                                return SlideTransition(
+                                  position: animation.drive(tween),
+                                  child: child,
+                                );
+                              },
+                            ),
+                          );
                         },
-                      ),
+                      ) : Container(),
                     ],
                   ),
                 ],
