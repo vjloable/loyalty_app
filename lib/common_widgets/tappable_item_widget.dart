@@ -23,6 +23,7 @@ class _TappableItemState extends State<TappableItem> {
         shape: const Border(bottom: BorderSide(color: Color(0x80959595))),
         child: InkWell(
           onTap: widget.onTap,
+          overlayColor: WidgetStateProperty.all(widget.tappedColor),
           splashColor: widget.tappedColor??Colors.black.withOpacity(0.1),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
