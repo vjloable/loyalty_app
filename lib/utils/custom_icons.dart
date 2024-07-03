@@ -27,6 +27,8 @@ class CustomIcons{
   static Widget link_to_socials = SvgPicture.asset("icons/Icon-LinkToSocials.svg");
   static Widget authorized_access = SvgPicture.asset("icons/Icon-AuthorizedAccess.svg");
 
+  static Widget back_arrow = SvgPicture.asset("icons/Icon-BackArrow.svg");
+
 
 
 
