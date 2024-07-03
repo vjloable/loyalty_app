@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:loyalty_app/utils/custom_icons.dart';
 
 class MeterBar extends StatefulWidget {
-  const MeterBar({super.key});
+  final int value;
+  const MeterBar({super.key, required this.value});
 
   @override
   State<MeterBar> createState() => _MeterBarState();
@@ -25,7 +26,7 @@ class _MeterBarState extends State<MeterBar> {
               borderRadius: BorderRadius.circular(20),
               color: const Color(0xFF6590FF),
               backgroundColor: const Color(0xFFD0DDFF),
-              value: 0.3,
+              value: widget.value / 100,
               minHeight: 30,
             ),
           ),
