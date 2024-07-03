@@ -4,7 +4,6 @@ class UserModel {
   final String? name;
   final String? email;
   final String uid;
-  final int permissions;
   final DateTime? createdAt;
   final bool isLocked;
 
@@ -13,7 +12,6 @@ class UserModel {
     required this.email,
     required this.uid,
     this.name = "",
-    this.permissions = 0,
     this.isLocked = false,
   });
 
@@ -26,7 +24,6 @@ class UserModel {
       name: data?['name'] ?? "",
       email: data?['email'] ?? "",
       uid: data?['uid'],
-      permissions: data?['permissions'],
       createdAt: (data?['creation'] as Timestamp).toDate(),
       isLocked: data?['isLocked'],
     );
@@ -38,7 +35,6 @@ class UserModel {
       if (name != null) "name": name else "name": "",
       if (email != null) "email" : email else "email" : "",
       "uid": uid,
-      "permissions": permissions,
       if (createdAt != null) "creation" : createdAt else "creation" : serverTimestamp,
       "isLocked": isLocked,
     };
