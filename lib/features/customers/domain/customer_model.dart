@@ -4,11 +4,13 @@ class Customer {
   final String? name;
   final String uid;
   final int points;
+  final int meter;
 
   Customer({
     this.name = "",
     required this.uid,
     this.points = 0,
+    this.meter = 0,
   });
 
   factory Customer.fromFirestore(
@@ -20,6 +22,7 @@ class Customer {
       name: data?['name'] ?? "",
       uid: data?['uid'],
       points: data?['points'],
+      meter: data?['meter'],
     );
   }
 
@@ -28,6 +31,7 @@ class Customer {
       if (name != null) "name": name else "name": "",
       "uid": uid,
       "points": points,
+      "meter": meter,
     };
   }
 }
