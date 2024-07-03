@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:loyalty_app/features/customers/data/customer_repository.dart';
 
+import '../../customers/data/customer_repository.dart';
 import '../../customers/presentation/parent_screen.dart';
 import '../data/user_repository.dart';
 import '../domain/user_model.dart';
@@ -22,11 +22,7 @@ class _RedirectScreenState extends State<RedirectScreen> {
       if (userModel.name == null) {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => CreateDisplayNamePage(userModel: userModel)));
       } else {
-        switch (userModel.permissions) {
-          case 0:
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ParentScreen()));
-            break;
-        }
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ParentScreen()));
       }
     }
   }
