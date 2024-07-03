@@ -10,7 +10,6 @@ class UserRepository {
         name: name,
         email: userModel.email,
         uid: userModel.uid,
-        permissions: userModel.permissions,
         createdAt: userModel.createdAt,
         isLocked: userModel.isLocked
     );
