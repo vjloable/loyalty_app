@@ -1,11 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:loyalty_app/common_widgets/tappable_item_widget.dart';
-import 'package:loyalty_app/features/authentication/application/authentication_service.dart';
-import 'package:loyalty_app/utils/custom_icons.dart';
+
+import '../../../common_widgets/tappable_item_widget.dart';
+import '../../../utils/custom_icons.dart';
+import '../../authentication/application/authentication_service.dart';
+import '../domain/customer_model.dart';
+import 'authorized_access_screen.dart';
 
 class AccountScreen extends StatefulWidget {
-  const AccountScreen({super.key});
+  final Customer customer;
+  const AccountScreen({super.key, required this.customer});
 
   @override
   State<AccountScreen> createState() => _AccountScreenState();
@@ -101,7 +105,9 @@ class _AccountScreenState extends State<AccountScreen> {
                         backgroundColor: const Color(0xFFFFEFEF),
                         tappedColor: const Color(0xFFFF7373).withOpacity(0.3),
                         textColor: const Color(0xFFFF7373),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AuthorizedAccessScreen()));
+                        },
                       ),
                     ],
                   ),
