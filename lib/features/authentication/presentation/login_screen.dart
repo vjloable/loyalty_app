@@ -381,7 +381,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 45,
                         height: 45,
                         child: ElevatedButton(
-                          onPressed: () {}, // TODO: add Facebook authentication
+                          onPressed: null,
                           style: ElevatedButton.styleFrom(
                             shape: const CircleBorder(),
                             padding: EdgeInsets.zero,
@@ -397,7 +397,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 45,
                         height: 45,
                         child: ElevatedButton(
-                          onPressed: () {}, // TODO: add X authentication
+                          onPressed: null,
                           style: ElevatedButton.styleFrom(
                             shape: const CircleBorder(),
                             padding: EdgeInsets.zero,
