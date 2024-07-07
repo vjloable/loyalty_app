@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common_widgets/bottom_appbar_widget.dart';
@@ -9,25 +8,19 @@ import '../domain/customer_model.dart';
 import 'account_screen.dart';
 import 'home_screen.dart';
 
-class ParentScreen extends StatefulWidget {
-  const ParentScreen({super.key});
+class CustomerParentScreen extends StatefulWidget {
+  final Customer customer;
+  const CustomerParentScreen({super.key, required this.customer});
 
   @override
-  State<ParentScreen> createState() => _ParentScreenState();
+  State<CustomerParentScreen> createState() => _CustomerParentScreenState();
 }
 
-class _ParentScreenState extends State<ParentScreen> {
-  User user = FirebaseAuth.instance.currentUser!;
+class _CustomerParentScreenState extends State<CustomerParentScreen> {
   PageStateHandler pageStateHandler = PageStateHandler();
-  Customer? customer;
 
-  Future<Customer?> fetchCustomer() async {
-    return CustomerRepository.get(user).then((fetchedCustomer) {
-      setState(() {
-        customer = fetchedCustomer;
-      });
-      return fetchedCustomer;
-    });
+  Future<void> refreshCustomer() async {
+    setState(() {});
   }
 
   @override
@@ -41,22 +34,23 @@ class _ParentScreenState extends State<ParentScreen> {
         extendBodyBehindAppBar: true,
         appBar: const TopAppBar(height: 105),
         body: FutureBuilder(
-          future: fetchCustomer(),
+          future: CustomerRepository.getCustomerDoc(widget.customer.uid),
+          initialData: widget.customer,
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
             if (snapshot.hasData) {
               if (snapshot.data != null) {
-                customer = snapshot.data!;
+                Customer customer = snapshot.data!;
                 return AnimatedBuilder(
                   animation: pageStateHandler,
                   builder: (context, child) {
                     return pageStateHandler.currentPage == 0
-                        ? HomeScreen(customer: customer!, callback: fetchCustomer,)
+                        ? HomeScreen(customer: customer, callback: refreshCustomer,)
                         : pageStateHandler.currentPage == 1
                         ? const Placeholder()
                         : pageStateHandler.currentPage == 2
                         ? const Placeholder()
                         : pageStateHandler.currentPage == 3
-                        ? AccountScreen(customer: customer!) : const Placeholder();
+                        ? AccountScreen(customer: customer) : const Placeholder();
                   },
                 );
               }

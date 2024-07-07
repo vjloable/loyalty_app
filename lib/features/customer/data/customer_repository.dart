@@ -1,20 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 import '../domain/customer_model.dart';
 
 final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
 class CustomerRepository {
-  static Customer initialize(User user) {
-    Customer customer = Customer(name: user.displayName, uid: user.uid);
+  static Customer initialize(String name, String uid) {
+    Customer customer = Customer(name: name, uid: uid);
     _firebaseFirestore
         .collection("customers")
         .withConverter(
       fromFirestore: Customer.fromFirestore,
       toFirestore: (Customer customer, options) => customer.toFirestore(),
     )
-        .doc(user.uid)
+        .doc(uid)
         .set(customer, SetOptions(merge: true))
         .then((_) {
       print("Successfully added customer");
@@ -24,10 +23,10 @@ class CustomerRepository {
     return customer;
   }
 
-  static Future<Customer?> get(User user) async {
+  static Future<Customer?> getCustomerDoc(String uid) async {
     DocumentReference<Customer> userCustomerDocRef = _firebaseFirestore
         .collection("customers")
-        .doc(user.uid)
+        .doc(uid)
         .withConverter(
       fromFirestore: Customer.fromFirestore,
       toFirestore: (Customer customer, _) => customer.toFirestore(),
@@ -36,16 +35,18 @@ class CustomerRepository {
     return customer;
   }
 
-  static void setName(User user, String name) {
-    _firebaseFirestore
+  static Future<String> setName(String uid, String name) {
+    return _firebaseFirestore
         .collection("customers")
-        .doc(user.uid)
+        .doc(uid)
         .update({"name": name})
         .then((_) {
-      print("Successfully named the customer");
-    }).onError((error, stackTrace) {
-      print("Error naming the customer");
-    });
+          print("Successfully named the customer");
+          return "Success";
+        }).onError((error, stackTrace) {
+          print("Error naming the customer");
+          return "Error";
+        });
   }
 
   // static Future<UserModel?> getUserDoc(User user) async {
