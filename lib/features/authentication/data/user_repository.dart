@@ -11,7 +11,8 @@ class UserRepository {
         email: userModel.email,
         uid: userModel.uid,
         createdAt: userModel.createdAt,
-        isLocked: userModel.isLocked
+        isLocked: userModel.isLocked,
+        permissionLevel: userModel.permissionLevel,
     );
     _firebaseFirestore
         .collection("users")
@@ -26,6 +27,24 @@ class UserRepository {
     }).onError((error, stackTrace) {
       print("Error adding user id");
     });
+  }
+
+  static Future<String> setPermissionLevel(UserModel userModel, int level) {
+    return _firebaseFirestore
+        .collection("users")
+        .withConverter(
+      fromFirestore: UserModel.fromFirestore,
+      toFirestore: (UserModel userModel, options) => userModel.toFirestore(),
+    )
+        .doc(userModel.uid)
+        .update({"permissionLevel": level})
+        .then((_) {
+          print("Successfully updated permission level");
+          return "Success";
+        }).onError((error, stackTrace) {
+          print("Error updated permission level");
+          return "Error";
+        });
   }
 
   static UserModel initialize(User user) {
@@ -46,10 +65,10 @@ class UserRepository {
     return userModel;
   }
 
-  static Future<UserModel?> getUserDoc(User user) async {
+  static Future<UserModel?> getUserDoc(String uid) async {
     DocumentReference<UserModel> userModelDocRef = _firebaseFirestore
         .collection("users")
-        .doc(user.uid)
+        .doc(uid)
         .withConverter(
       fromFirestore: UserModel.fromFirestore,
       toFirestore: (UserModel userModel, _) => userModel.toFirestore(),
