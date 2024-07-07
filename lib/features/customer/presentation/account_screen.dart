@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:loyalty_app/features/authentication/data/user_repository.dart';
+import 'package:loyalty_app/features/authentication/domain/user_model.dart';
 
 import '../../../common_widgets/tappable_item_widget.dart';
 import '../../../utils/custom_icons.dart';
@@ -15,6 +18,7 @@ class AccountScreen extends StatefulWidget {
 }
 
 class _AccountScreenState extends State<AccountScreen> {
+  User user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
@@ -97,31 +101,40 @@ class _AccountScreenState extends State<AccountScreen> {
                       TappableItem(icon: CustomIcons.user_profile, text: "User Profile", onTap: () {}),
                       TappableItem(icon: CustomIcons.security, text: "Security", onTap: () {}),
                       TappableItem(icon: CustomIcons.link_to_socials, text: "Link to Socials", onTap: () {}),
-                      widget.customer.tier > 0 ? TappableItem(
-                        icon: CustomIcons.authorized_access,
-                        text: "Authorized Access",
-                        backgroundColor: const Color(0xFFFFEFEF),
-                        tappedColor: const Color(0xFFFF7373).withOpacity(0.3),
-                        textColor: const Color(0xFFFF7373),
-                        onTap: () {
-                          Navigator.of(context).push(
-                            PageRouteBuilder(
-                              pageBuilder: (context, animation, secondaryAnimation) => const AuthorizedAccessScreen(),
-                              transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                                var begin = const Offset(1.0, 0.0);
-                                var end = Offset.zero;
-                                var curve = Curves.fastEaseInToSlowEaseOut;
-                                var tween = Tween(begin: begin, end: end)
-                                    .chain(CurveTween(curve: curve));
-                                return SlideTransition(
-                                  position: animation.drive(tween),
-                                  child: child,
+                      FutureBuilder(
+                        future: UserRepository.getUserDoc(widget.customer.uid),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            UserModel userModel = snapshot.data!;
+                            return userModel.permissionMax > 0 ? TappableItem(
+                              icon: CustomIcons.authorized_access,
+                              text: "Authorized Access",
+                              backgroundColor: const Color(0xFFFFEFEF),
+                              tappedColor: const Color(0xFFFF7373).withOpacity(0.3),
+                              textColor: const Color(0xFFFF7373),
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  PageRouteBuilder(
+                                    pageBuilder: (context, animation, secondaryAnimation) => AuthorizedAccessScreen(userModel: userModel,),
+                                    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                                      var begin = const Offset(1.0, 0.0);
+                                      var end = Offset.zero;
+                                      var curve = Curves.fastEaseInToSlowEaseOut;
+                                      var tween = Tween(begin: begin, end: end)
+                                          .chain(CurveTween(curve: curve));
+                                      return SlideTransition(
+                                        position: animation.drive(tween),
+                                        child: child,
+                                      );
+                                    },
+                                  ),
                                 );
                               },
-                            ),
-                          );
+                            ) : Container();
+                          }
+                          return Container();
                         },
-                      ) : Container(),
+                      ),
                     ],
                   ),
                 ],
