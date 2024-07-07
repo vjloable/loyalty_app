@@ -6,6 +6,8 @@ class UserModel {
   final String uid;
   final DateTime? createdAt;
   final bool isLocked;
+  final int permissionLevel;
+  final int permissionMax;
 
   UserModel({
     this.createdAt,
@@ -13,6 +15,8 @@ class UserModel {
     required this.uid,
     this.name = "",
     this.isLocked = false,
+    this.permissionLevel = 0,
+    this.permissionMax = 0,
   });
 
   factory UserModel.fromFirestore(
@@ -26,6 +30,8 @@ class UserModel {
       uid: data?['uid'],
       createdAt: (data?['creation'] as Timestamp).toDate(),
       isLocked: data?['isLocked'],
+      permissionLevel: data?['permissionLevel'],
+      permissionMax: data?['permissionMax'],
     );
   }
 
@@ -37,6 +43,8 @@ class UserModel {
       "uid": uid,
       if (createdAt != null) "creation" : createdAt else "creation" : serverTimestamp,
       "isLocked": isLocked,
+      "permissionLevel": permissionLevel,
+      "permissionMax": permissionMax,
     };
   }
 }
