@@ -7,16 +7,16 @@ import '../domain/customer_model.dart';
 import 'card_tiers_widget.dart';
 import 'meter_bar_widget.dart';
 
-class HomeScreen extends StatefulWidget {
+class CustomerHomeScreen extends StatefulWidget {
   final Customer customer;
   final Future<void> Function() callback;
-  const HomeScreen({super.key, required this.customer, required this.callback});
+  const CustomerHomeScreen({super.key, required this.customer, required this.callback});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<CustomerHomeScreen> createState() => _CustomerHomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
   final flipController = FlipCardController();
 
   @override
