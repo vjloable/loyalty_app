@@ -5,8 +5,8 @@ import '../../../common_widgets/top_appbar_widget.dart';
 import '../../../utils/page_state_handler.dart';
 import '../data/customer_repository.dart';
 import '../domain/customer_model.dart';
-import 'account_screen.dart';
-import 'home_screen.dart';
+import 'customer_account_screen.dart';
+import 'customer_home_screen.dart';
 
 class CustomerParentScreen extends StatefulWidget {
   final Customer customer;
@@ -44,7 +44,7 @@ class _CustomerParentScreenState extends State<CustomerParentScreen> {
                   animation: pageStateHandler,
                   builder: (context, child) {
                     return pageStateHandler.currentPage == 0
-                        ? HomeScreen(customer: customer, callback: refreshCustomer,)
+                        ? CustomerHomeScreen(customer: customer, callback: refreshCustomer,)
                         : pageStateHandler.currentPage == 1
                         ? const Placeholder()
                         : pageStateHandler.currentPage == 2
