@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:loyalty_app/features/worker/presentation/worker_parent_screen.dart';
 
-import '../../customers/data/customer_repository.dart';
-import '../../customers/presentation/parent_screen.dart';
+import '../../customer/data/customer_repository.dart';
+import '../../customer/domain/customer_model.dart';
+import '../../customer/presentation/customer_parent_screen.dart';
 import '../data/user_repository.dart';
 import '../domain/user_model.dart';
 import 'create_display_name_page.dart';
@@ -22,17 +24,40 @@ class _RedirectScreenState extends State<RedirectScreen> {
       if (userModel.name == null) {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => CreateDisplayNamePage(userModel: userModel)));
       } else {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ParentScreen()));
+        switch (userModel.permissionLevel) {
+          case 0:
+            CustomerRepository.getCustomerDoc(userModel.uid).then((customerModel) async {
+              if (customerModel == null) {
+                Customer customer = CustomerRepository.initialize(userModel.name!, userModel.uid);
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => CustomerParentScreen(customer: customer,)));
+              }
+              else {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => CustomerParentScreen(customer: customerModel,)));
+              }
+            });
+            break;
+          case 1:
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const WorkerParentScreen()));
+            // CustomerRepository.getCustomerDoc(userModel.uid).then((customerModel) async {
+            //   if (customerModel == null) {
+            //     CustomerRepository.initialize(userModel.name!, userModel.uid);
+            //     Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CustomerParentScreen()));
+            //   }
+            //   else {
+            //     Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CustomerParentScreen()));
+            //   }
+            // });
+            break;
+        }
       }
     }
   }
 
   void _checkUser() {
     User user = FirebaseAuth.instance.currentUser!;
-    UserRepository.getUserDoc(user).then((userModel) async {
+    UserRepository.getUserDoc(user.uid).then((userModel) async {
       if (userModel == null) {
         UserModel proxyUserModel = UserRepository.initialize(user);
-        CustomerRepository.initialize(user);
         _goToRedirection(proxyUserModel);
       }
       else {
