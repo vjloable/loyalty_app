@@ -49,11 +49,11 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Padding(
-                padding: EdgeInsets.only(bottom: 100),
+                padding: EdgeInsets.only(bottom: 60),
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    "Otter Bell",
+                    "WakBox",
                     style: TextStyle(
                       color: Color(0xFF0D0D0D),
                       fontWeight: FontWeight.bold,
