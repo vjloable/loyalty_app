@@ -54,6 +54,7 @@ class _CardTierState extends State<CardTier> {
                     Text(
                       widget.customer!.name??"",
                       style: const TextStyle(
+                        overflow: TextOverflow.ellipsis,
                         color: Color(0xFF515151),
                         fontWeight: FontWeight.w300,
                         fontSize: 22,
