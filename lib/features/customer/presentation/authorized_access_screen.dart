@@ -4,10 +4,11 @@ import 'package:loyalty_app/features/authentication/data/user_repository.dart';
 import '../../../common_widgets/rounded_elevated_button.dart';
 import '../../../utils/custom_icons.dart';
 import '../../../utils/illustration_vectors.dart';
+import '../../authentication/application/authentication_service.dart';
 import '../../authentication/domain/user_model.dart';
 
 class AuthorizedAccessScreen extends StatefulWidget {
-  final UserModel userModel;
+  final GenericUser userModel;
   const AuthorizedAccessScreen({super.key, required this.userModel});
 
   @override
@@ -30,17 +31,23 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                 height: 84,
                 width: double.infinity,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: InkWell(
+                      radius: 100,
+                      borderRadius: BorderRadius.circular(50),
                       onTap: () {
                         Navigator.of(context).pop();
                       },
-                      child: SizedBox(
-                        height: 26,
-                        width: 13,
-                        child: CustomIcons.back_arrow,
+                      child: CircleAvatar(
+                        radius: 24,
+                        backgroundColor: Colors.transparent,
+                        child: SizedBox(
+                          height: 26,
+                          width: 13,
+                          child: CustomIcons.back_arrow_dark,
+                        ),
                       ),
                     ),
                   ),
@@ -65,55 +72,90 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                 ),
               ),
               widget.userModel.permissionMax >= 4
-                  ? RoundedElevatedButton(
-                  text: "Administrator",
-                  onPressed: () {
-                    UserRepository.setPermissionLevel(widget.userModel, 4).then((result) {
-                      if (result == "Success") {
-                        Navigator.of(context).pop();
-                        Navigator.of(context).pop();
-                      }
-                    });
-                  })
+                  ? Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    child: RoundedElevatedButton(
+                    text: "Administrator",
+                    backgroundColor: const Color(0xFFFFFFFF),
+                    onPressed: widget.userModel.permissionLevel == 4 ? null : () {
+                      UserRepository.setPermissionLevel(widget.userModel, 4).then((result) {
+                        if (result == "Success") {
+                          Navigator.of(context).pop();
+                          Navigator.of(context).pop();
+                        }
+                      });
+                    }),
+                  )
                   : Container(),
               const SizedBox(height: 15,),
               widget.userModel.permissionMax >= 3
-                  ? RoundedElevatedButton(
-                  text: "Owner",
-                  onPressed: () {
-                    UserRepository.setPermissionLevel(widget.userModel, 3).then((result) {
-                      if (result == "Success") {
-                        Navigator.of(context).pop();
-                        Navigator.of(context).pop();
-                      }
-                    });
-                  })
+                  ? Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    child: RoundedElevatedButton(
+                    text: "Owner",
+                    backgroundColor: const Color(0xFFFFFFFF),
+                    onPressed: widget.userModel.permissionLevel == 3 ? null : () {
+                      UserRepository.setPermissionLevel(widget.userModel, 3).then((result) {
+                        if (result == "Success") {
+                          Navigator.of(context).pop();
+                          Navigator.of(context).pop();
+                        }
+                      });
+                    }),
+                  )
                   : Container(),
               const SizedBox(height: 15,),
               widget.userModel.permissionMax >= 2
-                  ? RoundedElevatedButton(
-                  text: "Manager",
-                  onPressed: () {
-                    UserRepository.setPermissionLevel(widget.userModel, 2).then((result) {
-                      if (result == "Success") {
-                        Navigator.of(context).pop();
-                        Navigator.of(context).pop();
-                      }
-                    });
-                  })
+                  ? Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    child: RoundedElevatedButton(
+                    text: "Manager",
+                    backgroundColor: const Color(0xFFFFFFFF),
+                    onPressed: widget.userModel.permissionLevel == 2 ? null : () {
+                      UserRepository.setPermissionLevel(widget.userModel, 2).then((result) {
+                        if (result == "Success") {
+                          Navigator.of(context).pop();
+                          Navigator.of(context).pop();
+                        }
+                      });
+                    }),
+                  )
                   : Container(),
               const SizedBox(height: 15,),
               widget.userModel.permissionMax >= 1
-                  ? RoundedElevatedButton(
-                  text: "Worker",
-                  onPressed: () {
-                    UserRepository.setPermissionLevel(widget.userModel, 1).then((result) {
-                      if (result == "Success") {
-                        Navigator.of(context).pop();
-                        Navigator.of(context).pop();
-                      }
-                    });
-                  })
+                  ? Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    child: RoundedElevatedButton(
+                    text: "Worker",
+                    backgroundColor: const Color(0xFFFFFFFF),
+                    onPressed: widget.userModel.permissionLevel == 1 ? null : () {
+                      UserRepository.setPermissionLevel(widget.userModel, 1).then((result) {
+                        if (result == "Success") {
+                          Navigator.of(context).pop();
+                          AuthenticationService.signOut();
+                          Navigator.of(context).pop();
+                        }
+                      });
+                    }),
+                  )
+                  : Container(),
+              const SizedBox(height: 15,),
+              widget.userModel.permissionMax >= 0
+                  ? Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                child: RoundedElevatedButton(
+                    text: "Customer",
+                    backgroundColor: const Color(0xFFFFFFFF),
+                    onPressed: widget.userModel.permissionLevel == 0 ? null : () {
+                      UserRepository.setPermissionLevel(widget.userModel, 0).then((result) {
+                        if (result == "Success") {
+                          Navigator.of(context).pop();
+                          AuthenticationService.signOut();
+                          Navigator.of(context).pop();
+                        }
+                      });
+                    }),
+              )
                   : Container(),
             ],
           ),
