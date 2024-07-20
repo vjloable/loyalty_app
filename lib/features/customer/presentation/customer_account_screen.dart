@@ -9,15 +9,15 @@ import '../../authentication/application/authentication_service.dart';
 import '../domain/customer_model.dart';
 import 'authorized_access_screen.dart';
 
-class AccountScreen extends StatefulWidget {
+class CustomerAccountScreen extends StatefulWidget {
   final Customer customer;
-  const AccountScreen({super.key, required this.customer});
+  const CustomerAccountScreen({super.key, required this.customer});
 
   @override
-  State<AccountScreen> createState() => _AccountScreenState();
+  State<CustomerAccountScreen> createState() => _CustomerAccountScreenState();
 }
 
-class _AccountScreenState extends State<AccountScreen> {
+class _CustomerAccountScreenState extends State<CustomerAccountScreen> {
   User user = FirebaseAuth.instance.currentUser!;
 
   @override
@@ -105,7 +105,7 @@ class _AccountScreenState extends State<AccountScreen> {
                         future: UserRepository.getUserDoc(widget.customer.uid),
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
-                            UserModel userModel = snapshot.data!;
+                            GenericUser userModel = snapshot.data!;
                             return userModel.permissionMax > 0 ? TappableItem(
                               icon: CustomIcons.authorized_access,
                               text: "Authorized Access",
