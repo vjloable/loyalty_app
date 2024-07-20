@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loyalty_app/features/authentication/application/authentication_service.dart';
 
 import '../../../common_widgets/bottom_appbar_widget.dart';
 import '../../../common_widgets/top_appbar_widget.dart';
@@ -32,7 +33,7 @@ class _CustomerParentScreenState extends State<CustomerParentScreen> {
         backgroundColor: const Color(0xFFF9F9F9),
         extendBody: true,
         extendBodyBehindAppBar: true,
-        appBar: const TopAppBar(height: 105),
+        appBar: const TopAppBar(height: 80),
         body: FutureBuilder(
           future: CustomerRepository.getCustomerDoc(widget.customer.uid),
           initialData: widget.customer,
@@ -50,7 +51,7 @@ class _CustomerParentScreenState extends State<CustomerParentScreen> {
                         : pageStateHandler.currentPage == 2
                         ? const Placeholder()
                         : pageStateHandler.currentPage == 3
-                        ? AccountScreen(customer: customer) : const Placeholder();
+                        ? CustomerAccountScreen(customer: customer) : const Placeholder();
                   },
                 );
               }
@@ -66,13 +67,25 @@ class _CustomerParentScreenState extends State<CustomerParentScreen> {
                 ),
               );
             }
-            return const Center(
-              child: SizedBox(
-                height: 40,
-                width: 40,
-                child: CircularProgressIndicator(
-                  color: Color(0xFF6590FF),
-                  value: null,
+            return Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                child: ElevatedButton(
+                    onPressed: () {
+                      AuthenticationService.signOut();
+                      Navigator.of(context).pop();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF6590FF),
+                      minimumSize: const Size(double.infinity, 40),
+                      surfaceTintColor: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          side: const BorderSide(color: Color(0xFF6590FF))
+                      ),
+                      elevation: 4,
+                    ),
+                    child: const Text("LOGOUT", style: TextStyle(color: Color(0xFFF9F9F9), fontSize: 18, fontWeight: FontWeight.w600)),
                 ),
               ),
             );
