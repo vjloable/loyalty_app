@@ -8,7 +8,7 @@ import '../data/user_repository.dart';
 import '../domain/user_model.dart';
 
 class CreateDisplayNamePage extends StatefulWidget {
-  final UserModel userModel;
+  final GenericUser userModel;
   const CreateDisplayNamePage({super.key, required this.userModel});
 
   @override
@@ -30,7 +30,7 @@ class _CreateDisplayNamePageState extends State<CreateDisplayNamePage> {
         width: double.infinity,
         height: double.infinity,
         child: Padding(
-          padding: const EdgeInsets.all(60.0),
+          padding: const EdgeInsets.symmetric(vertical: 60.0, horizontal: 30),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -42,13 +42,6 @@ class _CreateDisplayNamePageState extends State<CreateDisplayNamePage> {
                     color: Color(0xFF0D0D0D),
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
-                    shadows: [
-                      Shadow(
-                        color: Color(0x40000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                      ),
-                    ],
                   ),
                 ),
               ),
@@ -125,6 +118,7 @@ class _CreateDisplayNamePageState extends State<CreateDisplayNamePage> {
                             ),
                           ),
                         ),
+                        const SizedBox(height: 10),
                         ElevatedButton(
                           onPressed: () {
                             if (_createDisplayNameFormKey.currentState!.validate()) {
@@ -136,6 +130,8 @@ class _CreateDisplayNamePageState extends State<CreateDisplayNamePage> {
                                     Navigator.pop(context);
                                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => CustomerParentScreen(customer: customer!,)));
                                   });
+                                } else {
+                                  Navigator.pop(context);
                                 }
                               });
                             }
