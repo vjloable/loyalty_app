@@ -49,6 +49,25 @@ class CustomerRepository {
         });
   }
 
+  static Future<String> sendPoints(String uid, int points) {
+    DocumentReference<Map<String, dynamic>> customerDocRef = _firebaseFirestore
+        .collection("customers")
+        .doc(uid);
+    return _firebaseFirestore.runTransaction((transaction) async {
+      final snapshot = await transaction.get(customerDocRef);
+      final newPoints = snapshot.get("points") + points;
+      transaction.update(customerDocRef, {"points": newPoints});
+    }).then((value) {
+      print("DocumentSnapshot successfully updated!");
+      return "Success";
+    },
+      onError: (e) {
+        print("Error updating document $e");
+        return "Error";
+      },
+    );
+  }
+
   // static Future<UserModel?> getUserDoc(User user) async {
   //   DocumentReference<UserModel> userModelDocRef = _firebaseFirestore
   //       .collection("users")
