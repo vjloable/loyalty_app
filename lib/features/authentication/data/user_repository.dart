@@ -5,8 +5,8 @@ import 'package:loyalty_app/features/authentication/domain/user_model.dart';
 final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
 class UserRepository {
-  static void setUserDocName(UserModel userModel, String name) {
-    UserModel userModelWithName = UserModel(
+  static void setUserDocName(GenericUser userModel, String name) {
+    GenericUser userModelWithName = GenericUser(
         name: name,
         email: userModel.email,
         uid: userModel.uid,
@@ -17,8 +17,8 @@ class UserRepository {
     _firebaseFirestore
         .collection("users")
         .withConverter(
-      fromFirestore: UserModel.fromFirestore,
-      toFirestore: (UserModel userModel, options) => userModel.toFirestore(),
+      fromFirestore: GenericUser.fromFirestore,
+      toFirestore: (GenericUser userModel, options) => userModel.toFirestore(),
     )
         .doc(userModelWithName.uid)
         .set(userModelWithName, SetOptions(merge: true))
@@ -29,12 +29,12 @@ class UserRepository {
     });
   }
 
-  static Future<String> setPermissionLevel(UserModel userModel, int level) {
+  static Future<String> setPermissionLevel(GenericUser userModel, int level) {
     return _firebaseFirestore
         .collection("users")
         .withConverter(
-      fromFirestore: UserModel.fromFirestore,
-      toFirestore: (UserModel userModel, options) => userModel.toFirestore(),
+      fromFirestore: GenericUser.fromFirestore,
+      toFirestore: (GenericUser userModel, options) => userModel.toFirestore(),
     )
         .doc(userModel.uid)
         .update({"permissionLevel": level})
@@ -47,13 +47,13 @@ class UserRepository {
         });
   }
 
-  static UserModel initialize(User user) {
-    UserModel userModel = UserModel(email: user.email, uid: user.uid, name: user.displayName);
+  static GenericUser initialize(User user) {
+    GenericUser userModel = GenericUser(email: user.email, uid: user.uid, name: user.displayName);
     _firebaseFirestore
         .collection("users")
         .withConverter(
-      fromFirestore: UserModel.fromFirestore,
-      toFirestore: (UserModel userModel, options) => userModel.toFirestore(),
+      fromFirestore: GenericUser.fromFirestore,
+      toFirestore: (GenericUser userModel, options) => userModel.toFirestore(),
     )
         .doc(user.uid)
         .set(userModel, SetOptions(merge: true))
@@ -65,15 +65,15 @@ class UserRepository {
     return userModel;
   }
 
-  static Future<UserModel?> getUserDoc(String uid) async {
-    DocumentReference<UserModel> userModelDocRef = _firebaseFirestore
+  static Future<GenericUser?> getUserDoc(String uid) async {
+    DocumentReference<GenericUser> userModelDocRef = _firebaseFirestore
         .collection("users")
         .doc(uid)
         .withConverter(
-      fromFirestore: UserModel.fromFirestore,
-      toFirestore: (UserModel userModel, _) => userModel.toFirestore(),
+      fromFirestore: GenericUser.fromFirestore,
+      toFirestore: (GenericUser userModel, _) => userModel.toFirestore(),
     );
-    UserModel? userModel = (await userModelDocRef.get()).data();
+    GenericUser? userModel = (await userModelDocRef.get()).data();
     return userModel;
   }
 }
