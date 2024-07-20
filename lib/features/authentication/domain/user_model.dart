@@ -1,30 +1,30 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class UserModel {
+class GenericUser{
+  final String uid;
   final String? name;
   final String? email;
-  final String uid;
   final DateTime? createdAt;
   final bool isLocked;
   final int permissionLevel;
   final int permissionMax;
 
-  UserModel({
+  GenericUser({
+    this.name = "",
+    required this.uid,
     this.createdAt,
     required this.email,
-    required this.uid,
-    this.name = "",
     this.isLocked = false,
     this.permissionLevel = 0,
     this.permissionMax = 0,
   });
 
-  factory UserModel.fromFirestore(
+  factory GenericUser.fromFirestore(
       DocumentSnapshot<Map<String, dynamic>> snapshot,
       SnapshotOptions? options,
       ) {
     final data = snapshot.data();
-    return UserModel(
+    return GenericUser(
       name: data?['name'] ?? "",
       email: data?['email'] ?? "",
       uid: data?['uid'],
