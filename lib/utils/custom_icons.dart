@@ -27,7 +27,8 @@ class CustomIcons{
   static Widget link_to_socials = SvgPicture.asset("icons/Icon-LinkToSocials.svg");
   static Widget authorized_access = SvgPicture.asset("icons/Icon-AuthorizedAccess.svg");
 
-  static Widget back_arrow = SvgPicture.asset("icons/Icon-BackArrow.svg");
+  static Widget back_arrow_light = SvgPicture.asset("icons/Icon-BackArrow.svg", colorFilter: const ColorFilter.mode(Color(0xFFFFFFFF), BlendMode.srcIn),);
+  static Widget back_arrow_dark = SvgPicture.asset("icons/Icon-BackArrow.svg", colorFilter: const ColorFilter.mode(Color(0xFF3D3D3D), BlendMode.srcIn),);
 
 
 
