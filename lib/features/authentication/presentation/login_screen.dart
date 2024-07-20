@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
         width: double.infinity,
         height: double.infinity,
         child: Padding(
-          padding: const EdgeInsets.all(60.0),
+          padding: const EdgeInsets.symmetric(vertical: 60.0, horizontal: 30),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -55,16 +55,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Text(
                     "WakBox",
                     style: TextStyle(
-                      color: Color(0xFF0D0D0D),
+                      color: Color(0xFF171717),
                       fontWeight: FontWeight.bold,
                       fontSize: 100,
-                      shadows: [
-                        Shadow(
-                          color: Color(0x40000000),
-                          blurRadius: 4,
-                          offset: Offset(0, 4),
-                        ),
-                      ],
                     ),
                   ),
                 ),
