@@ -81,6 +81,7 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                       UserRepository.setPermissionLevel(widget.userModel, 4).then((result) {
                         if (result == "Success") {
                           Navigator.of(context).pop();
+                          AuthenticationService.signOut();
                           Navigator.of(context).pop();
                         }
                       });
@@ -98,6 +99,7 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                       UserRepository.setPermissionLevel(widget.userModel, 3).then((result) {
                         if (result == "Success") {
                           Navigator.of(context).pop();
+                          AuthenticationService.signOut();
                           Navigator.of(context).pop();
                         }
                       });
@@ -115,6 +117,7 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                       UserRepository.setPermissionLevel(widget.userModel, 2).then((result) {
                         if (result == "Success") {
                           Navigator.of(context).pop();
+                          AuthenticationService.signOut();
                           Navigator.of(context).pop();
                         }
                       });
