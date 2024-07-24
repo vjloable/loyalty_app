@@ -1,11 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:loyalty_app/features/manager/data/manager_repository.dart';
+import 'package:loyalty_app/features/owner/data/owner_repository.dart';
+import 'package:loyalty_app/features/owner/presentation/owner_parent_screen.dart';
 import 'package:loyalty_app/features/worker/data/worker_repository.dart';
 import 'package:loyalty_app/features/worker/presentation/worker_parent_screen.dart';
 
 import '../../customer/data/customer_repository.dart';
 import '../../customer/domain/customer_model.dart';
 import '../../customer/presentation/customer_parent_screen.dart';
+import '../../manager/domain/manager_model.dart';
+import '../../manager/presentation/manager_parent_screen.dart';
+import '../../owner/domain/owner_model.dart';
 import '../../worker/domain/worker_model.dart';
 import '../data/user_repository.dart';
 import '../domain/user_model.dart';
@@ -42,6 +48,28 @@ class _RedirectScreenState extends State<RedirectScreen> {
             }
             else {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => WorkerParentScreen(worker: workerModel)));
+            }
+          });
+          break;
+        case 2:
+          ManagerRepository.getManagerDoc(userModel.uid).then((managerModel) async {
+            if (managerModel == null) {
+              Manager manager = ManagerRepository.initialize(userModel.name!, userModel.uid);
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ManagerParentScreen(manager: manager)));
+            }
+            else {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ManagerParentScreen(manager: managerModel)));
+            }
+          });
+          break;
+        case 3:
+          OwnerRepository.getOwnerDoc(userModel.uid).then((ownerModel) async {
+            if (ownerModel == null) {
+              Owner owner = OwnerRepository.initialize(userModel.name!, userModel.uid);
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => OwnerParentScreen(owner: owner)));
+            }
+            else {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => OwnerParentScreen(owner: ownerModel)));
             }
           });
           break;
