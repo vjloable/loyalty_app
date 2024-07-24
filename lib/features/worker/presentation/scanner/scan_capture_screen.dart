@@ -5,7 +5,6 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../../../../utils/custom_icons.dart';
 
-
 class ScanScreen extends StatefulWidget {
   const ScanScreen({super.key});
 
@@ -81,8 +80,8 @@ class _ScanScreenState extends State<ScanScreen> {
   Widget build(BuildContext context) {
     final scanWindow = Rect.fromCenter(
       center: MediaQuery.sizeOf(context).center(Offset.zero),
-      width: 250,
-      height: 250,
+      width: 280,
+      height: 280,
     );
 
     return Scaffold(
@@ -101,9 +100,9 @@ class _ScanScreenState extends State<ScanScreen> {
             alignment: Alignment.topCenter,
             child: Column(
               children: [
-                const SizedBox(height: 50),
+                const SizedBox(height: 60),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: Align(
                     alignment: Alignment.topLeft,
                     child: SizedBox(
@@ -129,7 +128,7 @@ class _ScanScreenState extends State<ScanScreen> {
                               ),
                             ),
                             const Text(
-                              "BACK",
+                              "RETURN",
                               style: TextStyle(
                                 color: Color(0xFFFFFFFF),
                                 fontSize: 18,
@@ -142,17 +141,20 @@ class _ScanScreenState extends State<ScanScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 50),
-                Container(
-                  height: 100,
-                  color: const Color(0x806590FF),
-                  child: const Center(
-                    child: Text(
-                      "SCAN TO SEND POINTS",
-                      style: TextStyle(
-                        color: Color(0xFFFFFFFF),
-                        fontSize: 24,
-                        fontWeight: FontWeight.w900,
+                const SizedBox(height: 60),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30.0),
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: SizedBox(
+                      height: 40,
+                      child: Text(
+                        "SCAN QR",
+                        style: TextStyle(
+                          color: Color(0xFFFFFFFF),
+                          fontSize: 30,
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
                     ),
                   ),
@@ -162,11 +164,9 @@ class _ScanScreenState extends State<ScanScreen> {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
-              height: 150,
-              color: Colors.black.withOpacity(0.4),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30,)
+                  .add(const EdgeInsets.only(bottom: 30)),
               child: ScanResultScreen(barcodes: controller.barcodes),
             ),
           ),
