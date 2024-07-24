@@ -67,16 +67,4 @@ class CustomerRepository {
       },
     );
   }
-
-  // static Future<UserModel?> getUserDoc(User user) async {
-  //   DocumentReference<UserModel> userModelDocRef = _firebaseFirestore
-  //       .collection("users")
-  //       .doc(user.uid)
-  //       .withConverter(
-  //     fromFirestore: UserModel.fromFirestore,
-  //     toFirestore: (UserModel userModel, _) => userModel.toFirestore(),
-  //   );
-  //   UserModel? userModel = (await userModelDocRef.get()).data();
-  //   return userModel;
-  // }
 }
