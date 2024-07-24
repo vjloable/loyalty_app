@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../domain/worker_model.dart';
 
-
 final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
 class WorkerRepository {
@@ -36,15 +35,4 @@ class WorkerRepository {
     return worker;
   }
 
-  // static Future<UserModel?> getUserDoc(User user) async {
-  //   DocumentReference<UserModel> userModelDocRef = _firebaseFirestore
-  //       .collection("users")
-  //       .doc(user.uid)
-  //       .withConverter(
-  //     fromFirestore: UserModel.fromFirestore,
-  //     toFirestore: (UserModel userModel, _) => userModel.toFirestore(),
-  //   );
-  //   UserModel? userModel = (await userModelDocRef.get()).data();
-  //   return userModel;
-  // }
 }
