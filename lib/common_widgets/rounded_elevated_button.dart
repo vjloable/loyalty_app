@@ -4,7 +4,8 @@ class RoundedElevatedButton extends StatefulWidget {
   final String text;
   final Function()? onPressed;
   final Color backgroundColor;
-  const RoundedElevatedButton({super.key, this.text = "", this.onPressed, required this.backgroundColor});
+  final Color? borderColor;
+  const RoundedElevatedButton({super.key, this.text = "", this.onPressed, required this.backgroundColor, this.borderColor});
 
   @override
   State<RoundedElevatedButton> createState() => _RoundedElevatedButtonState();
@@ -16,6 +17,7 @@ class _RoundedElevatedButtonState extends State<RoundedElevatedButton> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: widget.borderColor ?? Colors.transparent),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.08),
