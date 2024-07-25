@@ -10,3 +10,14 @@ class PageStateHandler extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+class TabStateHandler extends ChangeNotifier {
+  int tab = 0;
+
+  int get currentPage => tab;
+
+  void slideToPage(int destinationIndex) {
+    tab = destinationIndex;
+    notifyListeners();
+  }
+}
