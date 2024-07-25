@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-import '../domain/customer_model.dart';
+import '../features/customer/domain/customer_model.dart';
 
 class CardTier extends StatefulWidget {
   final Widget card;
