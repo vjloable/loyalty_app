@@ -21,23 +21,23 @@ class ScanResultScreen extends StatelessWidget {
         if (scannedBarcodes.isEmpty) {
           return const RoundedElevatedButton(
             backgroundColor: Color(0xFFFFFFFF),
-            text: "CAPTURING",
             onPressed: null,
             borderColor: Color(0xFF6590FF),
+            child: Text("CAPTURING", style: TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700)),
           );
         } else {
           if (scannedBarcodes.first.displayValue!.length < 28) {
             return RoundedElevatedButton(
               backgroundColor: const Color(0xFFFFFFFF),
-              text: scannedBarcodes.first.displayValue!,
               onPressed: null,
+              child: Text(scannedBarcodes.first.displayValue!, style: const TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700)),
             );
           }
         }
 
         return RoundedElevatedButton(
           backgroundColor: const Color(0xFFFFFFFF),
-          text: scannedBarcodes.first.displayValue ?? 'No display value.',
+          child: Text(scannedBarcodes.first.displayValue ?? 'No display value.', style: const TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700)),
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScanSendScreen(recipient: scannedBarcodes.first.displayValue!,)));
           },
