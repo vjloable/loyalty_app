@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class RoundedElevatedButton extends StatefulWidget {
-  final String text;
   final Function()? onPressed;
   final Color backgroundColor;
   final Color? borderColor;
-  const RoundedElevatedButton({super.key, this.text = "", this.onPressed, required this.backgroundColor, this.borderColor});
+  final double height;
+  final Widget? child;
+  const RoundedElevatedButton({super.key, this.onPressed, required this.backgroundColor, this.borderColor, this.height = 70, this.child});
 
   @override
   State<RoundedElevatedButton> createState() => _RoundedElevatedButtonState();
@@ -31,13 +32,13 @@ class _RoundedElevatedButtonState extends State<RoundedElevatedButton> {
           onPressed: widget.onPressed,
           style: ElevatedButton.styleFrom(
             backgroundColor: widget.backgroundColor,
-            minimumSize: const Size(double.infinity, 70),
+            minimumSize: Size(double.infinity, widget.height),
             surfaceTintColor: Colors.transparent,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),
           ),
-          child: Text(widget.text, style: const TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700))
+          child: widget.child ?? SizedBox()
       ),
     );
   }
