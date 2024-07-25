@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/features/authentication/application/authentication_service.dart';
+import 'package:loyalty_app/features/customer/presentation/customer_wallet_screen.dart';
 
 import '../../../common_widgets/bottom_appbar_widget.dart';
 import '../../../common_widgets/top_appbar_widget.dart';
-import '../../../utils/page_state_handler.dart';
+import '../../../utils/state_handlers.dart';
 import '../data/customer_repository.dart';
 import '../domain/customer_model.dart';
 import 'customer_account_screen.dart';
@@ -45,9 +46,9 @@ class _CustomerParentScreenState extends State<CustomerParentScreen> {
                   animation: pageStateHandler,
                   builder: (context, child) {
                     return pageStateHandler.currentPage == 0
-                        ? CustomerHomeScreen(customer: customer, callback: refreshCustomer,)
+                        ? CustomerHomeScreen(customer: customer, callback: refreshCustomer)
                         : pageStateHandler.currentPage == 1
-                        ? const Placeholder()
+                        ? CustomerWalletScreen(customer: customer)
                         : pageStateHandler.currentPage == 2
                         ? const Placeholder()
                         : pageStateHandler.currentPage == 3
