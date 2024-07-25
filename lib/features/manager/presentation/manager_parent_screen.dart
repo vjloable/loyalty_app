@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../common_widgets/bottom_appbar_widget.dart';
 import '../../../common_widgets/top_appbar_widget.dart';
-import '../../../utils/page_state_handler.dart';
+import '../../../utils/state_handlers.dart';
 import '../../authentication/application/authentication_service.dart';
 import '../data/manager_repository.dart';
 import '../domain/manager_model.dart';
