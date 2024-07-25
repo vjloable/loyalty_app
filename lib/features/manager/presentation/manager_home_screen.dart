@@ -112,16 +112,16 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ScanScreen(),));
                       },
-                      text: "SCAN",
                       backgroundColor: const Color(0xFFFFFFFF),
+                      child: const Text("SCAN", style: TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700)),
                     ),
                   ),
                   const SizedBox(width: 10,),
                   Expanded(
                     child: RoundedElevatedButton(
                       onPressed: () {},
-                      text: "GIFT",
                       backgroundColor: const Color(0xFFFFFFFF),
+                      child: const Text("GIFT", style: TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700)),
                     ),
                   ),
                 ],
