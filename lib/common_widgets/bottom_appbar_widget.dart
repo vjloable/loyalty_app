@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/utils/custom_icons.dart';
-import 'package:loyalty_app/utils/page_state_handler.dart';
+import 'package:loyalty_app/utils/state_handlers.dart';
 
 class CustomBottomAppBar extends StatelessWidget {
   final PageStateHandler pageStateHandler;
