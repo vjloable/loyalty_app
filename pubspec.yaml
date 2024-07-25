@@ -50,28 +50,9 @@ flutter:
   uses-material-design: true
 
   assets:
-    - icons/Icon-Facebook.svg
-    - icons/Icon-Google.svg
-    - icons/Icon-X.svg
-    - icons/Icon-Password.svg
-    - icons/Icon-Email.svg
-    - icons/Icon-MiniCalendar.svg
-    - icons/Icon-Home.svg
-    - icons/Icon-Wallet.svg
-    - icons/Icon-Discover.svg
-    - icons/Icon-Profile.svg
-    - icons/Icon-DefaultUser.svg
-    - icons/Icon-Info.svg
-    - icons/Icon-Loyalty-App-TopBar.svg
-    - icons/Icon-Loyalty-Meter-Bar.svg
-    - icons/Icon-DarkMode.svg
-    - icons/Icon-Security.svg
-    - icons/Icon-UserProfile.svg
-    - icons/Icon-LinkToSocials.svg
-    - icons/Icon-AuthorizedAccess.svg
-    - icons/Icon-BackArrow.svg
-    - icons/Icon-AuthorizedAccessHero.svg
-    - cards/Cards_White.svg
+    - icons/
+    - graphics/illustrations/
+    - graphics/cards/
 
   # TODO: Add Poppins License to the License Registry
   fonts:
