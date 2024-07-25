@@ -2,7 +2,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_flip_card/flutter_flip_card.dart';
 
-import '../../../utils/cards.dart';
+import '../../../utils/graphics.dart';
 import '../domain/customer_model.dart';
 import 'card_tiers_widget.dart';
 import 'meter_bar_widget.dart';
@@ -34,7 +34,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 135),
+              const SizedBox(height: 130),
               const SizedBox(
                 width: double.infinity,
                 child: Padding(
