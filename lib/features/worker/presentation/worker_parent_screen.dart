@@ -5,7 +5,7 @@ import 'package:loyalty_app/features/worker/presentation/worker_home_screen.dart
 
 import '../../../common_widgets/bottom_appbar_widget.dart';
 import '../../../common_widgets/top_appbar_widget.dart';
-import '../../../utils/page_state_handler.dart';
+import '../../../utils/state_handlers.dart';
 import '../../authentication/application/authentication_service.dart';
 import '../domain/worker_model.dart';
 
