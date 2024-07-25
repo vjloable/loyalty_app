@@ -61,7 +61,7 @@ class _WorkerHomeScreenState extends State<WorkerHomeScreen> {
                       ],
                     ),
                     Text(
-                      widget.worker!.name??"",
+                      widget.worker.name??"",
                       style: const TextStyle(
                         color: Color(0xFF4E4E4E),
                         fontSize: 16,
