@@ -4,8 +4,8 @@ import 'package:flutter_flip_card/flutter_flip_card.dart';
 
 import '../../../utils/graphics.dart';
 import '../domain/customer_model.dart';
-import 'card_tiers_widget.dart';
-import 'meter_bar_widget.dart';
+import '../../../common_widgets/card_tiers_widget.dart';
+import '../../../common_widgets/meter_bar_widget.dart';
 
 class CustomerHomeScreen extends StatefulWidget {
   final Customer customer;
