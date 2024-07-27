@@ -21,9 +21,9 @@ class _RoundedElevatedButtonState extends State<RoundedElevatedButton> {
         border: Border.all(color: widget.borderColor ?? Colors.transparent),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withOpacity(0.05),
             spreadRadius: 0,
-            blurRadius: 4,
+            blurRadius: 10,
             offset: const Offset(0, 4),
           ),
         ],
@@ -38,7 +38,7 @@ class _RoundedElevatedButtonState extends State<RoundedElevatedButton> {
               borderRadius: BorderRadius.circular(20),
             ),
           ),
-          child: widget.child ?? SizedBox()
+          child: widget.child ?? const SizedBox()
       ),
     );
   }
