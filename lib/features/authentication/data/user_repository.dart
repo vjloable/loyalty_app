@@ -7,12 +7,13 @@ final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 class UserRepository {
   static void setUserDocName(GenericUser userModel, String name) {
     GenericUser userModelWithName = GenericUser(
-        name: name,
-        email: userModel.email,
-        uid: userModel.uid,
-        createdAt: userModel.createdAt,
-        isLocked: userModel.isLocked,
-        permissionLevel: userModel.permissionLevel,
+      name: name,
+      email: userModel.email,
+      uid: userModel.uid,
+      createdAt: userModel.createdAt,
+      birthdate: userModel.birthdate,
+      isLocked: userModel.isLocked,
+      permissionLevel: userModel.permissionLevel,
     );
     _firebaseFirestore
         .collection("users")
@@ -45,6 +46,24 @@ class UserRepository {
           print("Error updated permission level");
           return "Error";
         });
+  }
+
+  static Future<String> setBirthdate(GenericUser userModel, DateTime birthdate) {
+    return _firebaseFirestore
+        .collection("users")
+        .withConverter(
+      fromFirestore: GenericUser.fromFirestore,
+      toFirestore: (GenericUser userModel, options) => userModel.toFirestore(),
+    )
+        .doc(userModel.uid)
+        .update({"birthdate": birthdate})
+        .then((_) {
+      print("Successfully updated birthdate");
+      return "Success";
+    }).onError((error, stackTrace) {
+      print("Error updated birthdate");
+      return "Error";
+    });
   }
 
   static GenericUser initialize(User user) {
