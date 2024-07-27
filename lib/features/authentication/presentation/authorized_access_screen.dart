@@ -4,8 +4,8 @@ import 'package:loyalty_app/features/authentication/data/user_repository.dart';
 import '../../../common_widgets/rounded_elevated_button.dart';
 import '../../../utils/custom_icons.dart';
 import '../../../utils/graphics.dart';
-import '../../authentication/application/authentication_service.dart';
-import '../../authentication/domain/user_model.dart';
+import '../application/authentication_service.dart';
+import '../domain/user_model.dart';
 
 class AuthorizedAccessScreen extends StatefulWidget {
   final GenericUser userModel;
