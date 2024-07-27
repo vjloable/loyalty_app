@@ -123,7 +123,7 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                           }
                         });
                       },
-                      child: const Text("Owner", style: TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700)),
+                      child: const Text("Manager", style: TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700)),
                     ),
                   )
                   : Container(),
