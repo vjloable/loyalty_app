@@ -51,11 +51,10 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
               ),
               Stack(
                 children: [
-                  SizedBox(
+                  Container(
                     width: double.infinity,
-                    height: 235,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
                       child: GestureDetector(
                         onTap: () {
                           flipController.flipcard();
