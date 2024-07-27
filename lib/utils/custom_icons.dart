@@ -30,7 +30,8 @@ class CustomIcons{
   static Widget back_arrow_light = SvgPicture.asset("icons/Icon-BackArrow.svg", colorFilter: const ColorFilter.mode(Color(0xFFFFFFFF), BlendMode.srcIn),);
   static Widget back_arrow_dark = SvgPicture.asset("icons/Icon-BackArrow.svg", colorFilter: const ColorFilter.mode(Color(0xFF3D3D3D), BlendMode.srcIn),);
 
-
-
-
+  static Widget mini_location = SvgPicture.asset("icons/deal_card/Icon-Location.svg");
+  static Widget mini_time = SvgPicture.asset("icons/deal_card/Icon-Time.svg");
+  static Widget mini_date = SvgPicture.asset("icons/deal_card/Icon-Date.svg");
+  static Widget mini_check = SvgPicture.asset("icons/deal_card/Icon-Check.svg");
 }
