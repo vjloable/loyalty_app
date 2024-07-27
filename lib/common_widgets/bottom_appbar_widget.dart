@@ -27,44 +27,69 @@ class CustomBottomAppBar extends StatelessWidget {
                   onPressed: (){
                     pageStateHandler.gotoPage(0);
                   },
-                  icon: AnimatedBuilder(
-                    animation: pageStateHandler,
-                    builder: (context, child) {
-                      return pageStateHandler.currentPage == 0 ? CustomIcons.home_active : CustomIcons.home;
-                    },
+                  icon: SizedBox(
+                    height: 40,
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: AnimatedBuilder(
+                        animation: pageStateHandler,
+                        builder: (context, child) {
+                          return pageStateHandler.currentPage == 0 ? CustomIcons.home_active : CustomIcons.home;
+                        },
+                      ),
+                    ),
                   ),
                 ),
                 IconButton(
                   onPressed: (){
                     pageStateHandler.gotoPage(1);
                   },
-                  icon: AnimatedBuilder(
-                    animation: pageStateHandler,
-                    builder: (context, child) {
-                      return pageStateHandler.currentPage == 1 ? CustomIcons.wallet_active : CustomIcons.wallet;
-                    },
+                  icon: Container(
+                    height: 40,
+                    color: Colors.transparent,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 6, bottom: 2, left: 4, right: 4),
+                      child: AnimatedBuilder(
+                        animation: pageStateHandler,
+                        builder: (context, child) {
+                          return pageStateHandler.currentPage == 1 ? CustomIcons.wallet_active : CustomIcons.wallet;
+                        },
+                      ),
+                    ),
                   ),
                 ),
                 IconButton(
                   onPressed: (){
                     pageStateHandler.gotoPage(2);
                   },
-                  icon: AnimatedBuilder(
-                    animation: pageStateHandler,
-                    builder: (context, child) {
-                      return pageStateHandler.currentPage == 2 ? CustomIcons.discover_active : CustomIcons.discover;
-                    },
+                  icon: SizedBox(
+                    height: 40,
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: AnimatedBuilder(
+                        animation: pageStateHandler,
+                        builder: (context, child) {
+                          return pageStateHandler.currentPage == 2 ? CustomIcons.discover_active : CustomIcons.discover;
+                        },
+                      ),
+                    ),
                   ),
                 ),
                 IconButton(
                   onPressed: (){
                     pageStateHandler.gotoPage(3);
                   },
-                  icon: AnimatedBuilder(
-                    animation: pageStateHandler,
-                    builder: (context, child) {
-                      return pageStateHandler.currentPage == 3 ? CustomIcons.profile_active : CustomIcons.profile;
-                    },
+                  icon: SizedBox(
+                    height: 40,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: AnimatedBuilder(
+                        animation: pageStateHandler,
+                        builder: (context, child) {
+                          return pageStateHandler.currentPage == 3 ? CustomIcons.profile_active : CustomIcons.profile;
+                        },
+                      ),
+                    ),
                   ),
                 ),
               ],
