@@ -36,7 +36,7 @@ class _CustomerAccountScreenState extends State<CustomerAccountScreen> {
               transitionsBuilder: (context, animation, secondaryAnimation, child) {
                 var begin = const Offset(1.0, 0.0);
                 var end = Offset.zero;
-                var curve = Curves.fastEaseInToSlowEaseOut;
+                var curve = Curves.easeInOut;
                 var tween = Tween(begin: begin, end: end)
                     .chain(CurveTween(curve: curve));
                 return SlideTransition(
@@ -138,7 +138,7 @@ class _CustomerAccountScreenState extends State<CustomerAccountScreen> {
                         future: UserRepository.getUserDoc(widget.customer.uid),
                         builder: (context, snapshot) {
                           return AnimatedSwitcher(
-                            duration: const Duration(milliseconds: 200),
+                            duration: const Duration(seconds: 1),
                             child: _showIfAuthorized(snapshot),
                           );
                         },
