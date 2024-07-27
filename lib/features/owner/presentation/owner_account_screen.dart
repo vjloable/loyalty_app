@@ -20,6 +20,39 @@ class OwnerAccountScreen extends StatefulWidget {
 class _OwnerAccountScreenState extends State<OwnerAccountScreen> {
   User user = FirebaseAuth.instance.currentUser!;
 
+  Widget _showIfAuthorized(AsyncSnapshot<GenericUser?> snapshot){
+    if (snapshot.hasData) {
+      GenericUser userModel = snapshot.data!;
+      return userModel.permissionMax > 0 ? TappableItem(
+        icon: CustomIcons.authorized_access,
+        text: "Authorized Access",
+        backgroundColor: const Color(0xFFFFEFEF),
+        tappedColor: const Color(0xFFFF7373).withOpacity(0.3),
+        textColor: const Color(0xFFFF7373),
+        onTap: () {
+          Navigator.of(context).push(
+            PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) => AuthorizedAccessScreen(userModel: userModel,),
+              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                var begin = const Offset(1.0, 0.0);
+                var end = Offset.zero;
+                var curve = Curves.easeInOut;
+                var tween = Tween(begin: begin, end: end)
+                    .chain(CurveTween(curve: curve));
+                return SlideTransition(
+                  position: animation.drive(tween),
+                  child: child,
+                );
+              },
+            ),
+          );
+        },
+      ) : Container();
+    } else {
+      return Container();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -104,35 +137,10 @@ class _OwnerAccountScreenState extends State<OwnerAccountScreen> {
                       FutureBuilder(
                         future: UserRepository.getUserDoc(widget.owner.uid),
                         builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            GenericUser userModel = snapshot.data!;
-                            return userModel.permissionMax > 0 ? TappableItem(
-                              icon: CustomIcons.authorized_access,
-                              text: "Authorized Access",
-                              backgroundColor: const Color(0xFFFFEFEF),
-                              tappedColor: const Color(0xFFFF7373).withOpacity(0.3),
-                              textColor: const Color(0xFFFF7373),
-                              onTap: () {
-                                Navigator.of(context).push(
-                                  PageRouteBuilder(
-                                    pageBuilder: (context, animation, secondaryAnimation) => AuthorizedAccessScreen(userModel: userModel,),
-                                    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                                      var begin = const Offset(1.0, 0.0);
-                                      var end = Offset.zero;
-                                      var curve = Curves.fastEaseInToSlowEaseOut;
-                                      var tween = Tween(begin: begin, end: end)
-                                          .chain(CurveTween(curve: curve));
-                                      return SlideTransition(
-                                        position: animation.drive(tween),
-                                        child: child,
-                                      );
-                                    },
-                                  ),
-                                );
-                              },
-                            ) : Container();
-                          }
-                          return Container();
+                          return AnimatedSwitcher(
+                            duration: const Duration(seconds: 1),
+                            child: _showIfAuthorized(snapshot),
+                          );
                         },
                       ),
                     ],

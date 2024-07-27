@@ -127,6 +127,56 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                 ],
               ),
             ),
+            const SizedBox(height: 20),
+            const SizedBox(
+              width: double.infinity,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 0),
+                child: SizedBox(
+                  height: 30,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        fit: FlexFit.loose,
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            "Manage",
+                            style: TextStyle(
+                              color: Color(0xFF4E4E4E),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 5),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              child: Column(
+                children: [
+                  RoundedElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ScanScreen(),));
+                    },
+                    backgroundColor: const Color(0xFFFFFFFF),
+                    child: const Text("SCAN", style: TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700)),
+                  ),
+                  const SizedBox(height: 10),
+                  RoundedElevatedButton(
+                    onPressed: () {},
+                    backgroundColor: const Color(0xFFFFFFFF),
+                    child: const Text("GIFT", style: TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700)),
+                  ),
+                ],
+              ),
+            ),
           ]),
         ),
       ),
