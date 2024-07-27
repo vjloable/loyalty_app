@@ -170,6 +170,7 @@ class _CustomerWalletScreenState extends State<CustomerWalletScreen> {
                 );
               }
             ),
+            const SizedBox(height: 100),
           ],
         ),
       ),
