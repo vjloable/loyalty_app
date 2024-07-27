@@ -17,27 +17,34 @@ class _CardTierState extends State<CardTier> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      elevation: 5,
-      borderRadius: const BorderRadius.all(Radius.circular(20)),
+      elevation: 20,
+      color: Colors.transparent,
+      borderRadius: BorderRadius.circular(20),
       child: widget.flipped ?
       Container(
+        height: 220,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: Colors.white,
         ),
-        child: Center(
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Center(
             child: QrImageView(
               data: widget.customer == null ? "" : widget.customer!.uid,
               version: QrVersions.auto,
-              size: 200.0,
+              size: 200,
             ),
           ),
         ),
-      ) :
-      Stack(
-        children: [
+      ) : Container(
+        height: 220,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white,
+        ),
+        child: Stack(
+          children: [
             widget.card,
             SizedBox(
               height: double.infinity,
@@ -85,7 +92,8 @@ class _CardTierState extends State<CardTier> {
               ),
             ),
           ],
-      )
+        ),
+      ),
     );
   }
 }
