@@ -6,7 +6,7 @@ import '../../../utils/custom_icons.dart';
 import '../../authentication/application/authentication_service.dart';
 import '../../authentication/data/user_repository.dart';
 import '../../authentication/domain/user_model.dart';
-import '../../customer/presentation/authorized_access_screen.dart';
+import '../../authentication/presentation/authorized_access_screen.dart';
 import '../domain/owner_model.dart';
 
 class OwnerAccountScreen extends StatefulWidget {

@@ -7,7 +7,7 @@ import '../../../common_widgets/tappable_item_widget.dart';
 import '../../../utils/custom_icons.dart';
 import '../../authentication/application/authentication_service.dart';
 import '../domain/customer_model.dart';
-import 'authorized_access_screen.dart';
+import '../../authentication/presentation/authorized_access_screen.dart';
 
 class CustomerAccountScreen extends StatefulWidget {
   final Customer customer;
