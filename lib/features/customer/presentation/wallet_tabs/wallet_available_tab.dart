@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:loyalty_app/common_widgets/deal_card_widget.dart';
+import 'package:loyalty_app/features/customer/presentation/wallet_available_deal_screen.dart';
 
 import '../../../../utils/graphics.dart';
 
@@ -42,64 +44,9 @@ class _WalletAvailableTabState extends State<WalletAvailableTab> {
             ),
           ),
         ),
-        // Padding(
-        //   padding: const EdgeInsets.symmetric(horizontal: 30.0),
-        //   child: SizedBox(
-        //     height: 100,
-        //     child: Flexible(
-        //       child: InkWell(
-        //         onTap: () {
-        //
-        //         },
-        //         borderRadius: BorderRadius.circular(20),
-        //         splashColor: Colors.white,
-        //         splashFactory: InkSplash.splashFactory,
-        //         child: Ink(
-        //           decoration: BoxDecoration(
-        //             color: const Color(0xFF6590FF),
-        //             borderRadius: BorderRadius.circular(20),
-        //           ),
-        //           child: const SizedBox(
-        //             height: 45,
-        //             width: double.infinity,
-        //             child: Center(
-        //               child: Text("Available", style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 14, fontWeight: FontWeight.w700)),
-        //             ),
-        //           ),
-        //         ),
-        //       ),
-        //     ),
-        //   ),
-        // ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Material(
-            color: Colors.transparent,
-            borderRadius: BorderRadius.circular(40),
-            elevation: 4,
-            child: InkWell(
-              onTap: () {},
-              borderRadius: BorderRadius.circular(20),
-              child: Column(
-                children: [
-                  Ink(
-                    height: 150,
-                    decoration: const BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-                    ),
-                  ),
-                  Ink(
-                    height: 50,
-                    decoration: const BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 30),
+          child: DealCardWidget(destination: WalletAvailableDealScreen()),
         ),
         SizedBox(
           height: 200,
