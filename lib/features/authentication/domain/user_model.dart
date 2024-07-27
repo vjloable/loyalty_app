@@ -5,6 +5,7 @@ class GenericUser{
   final String? name;
   final String? email;
   final DateTime? createdAt;
+  final DateTime? birthdate;
   final bool isLocked;
   final int permissionLevel;
   final int permissionMax;
@@ -17,6 +18,7 @@ class GenericUser{
     this.isLocked = false,
     this.permissionLevel = 0,
     this.permissionMax = 0,
+    this.birthdate,
   });
 
   factory GenericUser.fromFirestore(
@@ -29,6 +31,7 @@ class GenericUser{
       email: data?['email'] ?? "",
       uid: data?['uid'],
       createdAt: (data?['creation'] as Timestamp).toDate(),
+      birthdate: data?['birthdate'] == null ? null : ((data?['birthdate'] as Timestamp).toDate()),
       isLocked: data?['isLocked'],
       permissionLevel: data?['permissionLevel'],
       permissionMax: data?['permissionMax'],
@@ -42,6 +45,7 @@ class GenericUser{
       if (email != null) "email" : email else "email" : "",
       "uid": uid,
       if (createdAt != null) "creation" : createdAt else "creation" : serverTimestamp,
+      if (birthdate != null) "birthdate" : birthdate else "birthdate" : serverTimestamp,
       "isLocked": isLocked,
       "permissionLevel": permissionLevel,
       "permissionMax": permissionMax,
