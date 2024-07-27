@@ -51,6 +51,7 @@ flutter:
 
   assets:
     - icons/
+    - icons/deal_card/
     - graphics/illustrations/
     - graphics/cards/
 
