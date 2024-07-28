@@ -48,7 +48,7 @@ class CustomBottomAppBar extends StatelessWidget {
                     height: 40,
                     color: Colors.transparent,
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 6, bottom: 2, left: 4, right: 4),
+                      padding: const EdgeInsets.only(top: 3, bottom: 2, left: 4, right: 4),
                       child: AnimatedBuilder(
                         animation: pageStateHandler,
                         builder: (context, child) {
