@@ -6,8 +6,9 @@ class TappableItem extends StatefulWidget {
   final Color? textColor;
   final String text;
   final Widget? icon;
+  final Widget? child;
   final Function()? onTap;
-  const TappableItem({super.key, this.backgroundColor, this.textColor, this.text = "", this.icon, this.onTap, this.tappedColor});
+  const TappableItem({super.key, this.backgroundColor, this.textColor, this.text = "", this.icon, this.onTap, this.tappedColor, this.child});
 
   @override
   State<TappableItem> createState() => _TappableItemState();
@@ -42,6 +43,7 @@ class _TappableItemState extends State<TappableItem> {
                     ),
                   ),
                 ),
+                widget.child ?? Container(),
               ],
             ),
           ),
