@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/common_widgets/deal_card_widget.dart';
-import 'package:loyalty_app/features/customer/presentation/wallet_available_deal_screen.dart';
+import 'package:loyalty_app/features/customer/presentation/wallet_tabs/wallet_available_deal_screen.dart';
 
 import '../../../../utils/graphics.dart';
 
