@@ -1,3 +1,4 @@
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:loyalty_app/common_widgets/rounded_elevated_button.dart';
 import 'package:loyalty_app/utils/custom_icons.dart';
@@ -68,13 +69,10 @@ class _WalletAvailableDealScreenState extends State<WalletAvailableDealScreen> {
                       height: 40,
                       width: double.infinity,
                       padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          border: Border.all(
-                            color: const Color(0xFF6590FF),
-                          ),
-                        ),
+                      child: DottedBorder(
+                        color: const Color(0xFF6590FF),
+                        dashPattern: const [4, 4],
+                        strokeWidth: 2,
                         child: const Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -109,33 +107,28 @@ class _WalletAvailableDealScreenState extends State<WalletAvailableDealScreen> {
                       ),
                     ),
                     Container(
-                      height: 18,
+                      height: 25,
                       width: double.infinity,
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                            height: 15,
-                            width: 15,
-                            color: Colors.green,
+                          SizedBox(
+                            height: 25,
+                            width: 25,
                             child: CustomIcons.mini_location,
                           ),
-                          const SizedBox(width: 10),
+                          const SizedBox(width: 5),
                           const Text(
                             "Store Name, Location, or Branch",
                             style: TextStyle(
                               color: Color(0xFF4E4E4E),
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
                         ],
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                      width: 100,
                     ),
                     const SizedBox(
                       height: 10,
@@ -159,135 +152,147 @@ class _WalletAvailableDealScreenState extends State<WalletAvailableDealScreen> {
                       width: 100,
                     ),
                     Container(
-                      height: 72,
+                      height: 90,
                       width: double.infinity,
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const SizedBox(
-                            height: 20,
+                            height: 30,
                             child: Text(
                               "Validity",
                               style: TextStyle(
                                 color: Color(0xFF4E4E4E),
-                                fontSize: 16,
+                                fontSize: 20,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
                           ),
-                          const SizedBox(height: 8),
-                          Row(
-                            children: [
-                              Container(
-                                height: 15,
-                                width: 15,
-                                color: Colors.green,
-                                child: CustomIcons.mini_time,
-                              ),
-                              const SizedBox(width: 10),
-                              const SizedBox(
-                                height: 18,
-                                child: Text(
-                                  "4:00 AM - 7:00 PM",
-                                  style: TextStyle(
-                                    color: Color(0xFF4E4E4E),
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
+                          Expanded(
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  height: 25,
+                                  width: 25,
+                                  child: CustomIcons.mini_time,
+                                ),
+                                const SizedBox(width: 5),
+                                const Expanded(
+                                  child: SizedBox(
+                                    height: 20,
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        "4:00 AM - 7:00 PM",
+                                        style: TextStyle(
+                                          color: Color(0xFF4E4E4E),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                          const SizedBox(height: 8),
-                          Row(
-                            children: [
-                              Container(
-                                height: 15,
-                                width: 15,
-                                color: Colors.green,
-                                child: CustomIcons.mini_calendar,
-                              ),
-                              const SizedBox(width: 10),
-                              const SizedBox(
-                                height: 18,
-                                child: Text(
-                                  "Monday - Friday",
-                                  style: TextStyle(
-                                    color: Color(0xFF4E4E4E),
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
+                          Expanded(
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  height: 25,
+                                  width: 25,
+                                  child: CustomIcons.mini_date,
+                                ),
+                                const SizedBox(width: 5),
+                                const Expanded(
+                                  child: SizedBox(
+                                    height: 20,
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        "Monday - Friday",
+                                        style: TextStyle(
+                                          color: Color(0xFF4E4E4E),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ],
                       ),
                     ),
                     const SizedBox(
-                      height: 30,
-                      width: 100,
+                      height: 10,
                     ),
                     Container(
-                      height: 72,
                       width: double.infinity,
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const SizedBox(
-                            height: 20,
+                            height: 30,
                             child: Text(
                               "Conditions",
                               style: TextStyle(
                                 color: Color(0xFF4E4E4E),
-                                fontSize: 16,
+                                fontSize: 20,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
                           ),
-                          const SizedBox(height: 8),
                           Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Container(
-                                height: 15,
-                                width: 15,
-                                color: Colors.green,
+                              SizedBox(
+                                height: 25,
+                                width: 25,
                                 child: CustomIcons.mini_check,
                               ),
-                              const SizedBox(width: 10),
-                              const SizedBox(
-                                height: 18,
-                                child: Text(
-                                  "Requires x number of points",
-                                  style: TextStyle(
-                                    color: Color(0xFF4E4E4E),
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
+                              const SizedBox(width: 5),
+                              const Expanded(
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: 3.5),
+                                  child: Text(
+                                    "Requires x number of points",
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      color: Color(0xFF4E4E4E),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                    ),
                                   ),
                                 ),
                               ),
                             ],
                           ),
-                          const SizedBox(height: 8),
                           Row(
                             children: [
-                              Container(
-                                height: 15,
-                                width: 15,
-                                color: Colors.green,
+                              SizedBox(
+                                height: 25,
+                                width: 25,
                                 child: CustomIcons.mini_check,
                               ),
-                              const SizedBox(width: 10),
-                              const SizedBox(
-                                height: 18,
-                                child: Text(
-                                  "Must be scanned on a specific store location",
-                                  style: TextStyle(
-                                    color: Color(0xFF4E4E4E),
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
+                              const SizedBox(width: 5),
+                              const Expanded(
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: 3.5),
+                                  child: Text(
+                                    "Must be scanned on a specific store location location location location Must be scanned on a specific store location location location location",
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      color: Color(0xFF4E4E4E),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -320,7 +325,7 @@ class _WalletAvailableDealScreenState extends State<WalletAvailableDealScreen> {
                                     "How it works?",
                                     style: TextStyle(
                                       color: Color(0xFF4E4E4E),
-                                      fontSize: 12,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.w700,
                                     ),
                                   ),
@@ -335,7 +340,7 @@ class _WalletAvailableDealScreenState extends State<WalletAvailableDealScreen> {
                                     textAlign: TextAlign.justify,
                                     style: TextStyle(
                                       color: Color(0xFF4E4E4E),
-                                      fontSize: 10,
+                                      fontSize: 12,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
