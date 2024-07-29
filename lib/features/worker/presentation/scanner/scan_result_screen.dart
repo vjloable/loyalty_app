@@ -23,7 +23,7 @@ class ScanResultScreen extends StatelessWidget {
             backgroundColor: Color(0xFFFFFFFF),
             onPressed: null,
             borderColor: Color(0xFF6590FF),
-            child: Text("CAPTURING", style: TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700)),
+            child: Text("CAPTURING", style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
           );
         } else {
           if (scannedBarcodes.first.displayValue!.length < 28) {
