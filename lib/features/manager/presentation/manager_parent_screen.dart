@@ -30,7 +30,7 @@ class _ManagerParentScreenState extends State<ManagerParentScreen> {
       canPop: false,
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: const Color(0xFFF9F9F9),
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         extendBody: true,
         extendBodyBehindAppBar: true,
         appBar: const TopAppBar(height: 80),
