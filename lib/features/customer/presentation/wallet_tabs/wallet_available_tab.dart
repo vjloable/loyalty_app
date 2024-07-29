@@ -16,7 +16,7 @@ class _WalletAvailableTabState extends State<WalletAvailableTab> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
+        SizedBox(
           width: double.infinity,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
@@ -32,7 +32,7 @@ class _WalletAvailableTabState extends State<WalletAvailableTab> {
                       child: Text(
                         "Available",
                         style: TextStyle(
-                          color: Color(0xFF4E4E4E),
+                          color: Theme.of(context).colorScheme.onSecondary,
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
                         ),
@@ -46,18 +46,20 @@ class _WalletAvailableTabState extends State<WalletAvailableTab> {
         ),
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 30),
-          child: DealCardWidget(destination: WalletAvailableDealScreen()),
+          child: DealCardWidget(
+            destination: WalletAvailableDealScreen(),
+          ),
         ),
         SizedBox(
           height: 200,
           child: Illustration.no_available_deals,
         ),
-        const SizedBox(
+        SizedBox(
           height: 30,
           child: Text(
             "There are no deals available.",
             style: TextStyle(
-              color: Color(0xFF4E4E4E),
+              color: Theme.of(context).colorScheme.onSecondary,
               fontSize: 14,
               fontWeight: FontWeight.w600,
             ),

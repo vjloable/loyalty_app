@@ -31,13 +31,17 @@ class _TappableItemState extends State<TappableItem> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(width: 40, height: 40, child: widget.icon??const Placeholder()),
+                SizedBox(
+                  width: 40,
+                  height: 40,
+                  child: widget.icon ?? const Placeholder(),
+                ),
                 const SizedBox(width: 10),
                 Expanded(
                   child: Text(
                     widget.text,
                     style: TextStyle(
-                      color: widget.textColor??const Color(0xFF4E4E4E),
+                      color: widget.textColor ?? Theme.of(context).colorScheme.onSecondary,
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
                     ),

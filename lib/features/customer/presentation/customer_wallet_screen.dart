@@ -27,14 +27,14 @@ class _CustomerWalletScreenState extends State<CustomerWalletScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 130),
-            const SizedBox(
+            SizedBox(
               width: double.infinity,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 0),
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
                 child: Text(
                   "WALLET",
                   style: TextStyle(
-                    color: Color(0xFF4E4E4E),
+                    color: Theme.of(context).colorScheme.onSecondary,
                     fontSize: 24,
                     fontWeight: FontWeight.w900,
                   ),
@@ -57,18 +57,18 @@ class _CustomerWalletScreenState extends State<CustomerWalletScreen> {
                               tabStateHandler.slideToPage(0);
                             },
                             borderRadius: BorderRadius.circular(20),
-                            splashColor: Colors.white,
+                            splashColor: Theme.of(context).colorScheme.onSecondary,
                             splashFactory: InkSplash.splashFactory,
                             child: Ink(
                               decoration: BoxDecoration(
                                 color: const Color(0xFF6590FF),
                                 borderRadius: BorderRadius.circular(20),
                               ),
-                              child: const SizedBox(
+                              child: SizedBox(
                                 height: 45,
                                 width: double.infinity,
                                 child: Center(
-                                  child: Text("Available", style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 14, fontWeight: FontWeight.w700)),
+                                  child: Text("Available", style: TextStyle(color: Theme.of(context).colorScheme.onPrimary, fontSize: 14, fontWeight: FontWeight.w700)),
                                 ),
                               ),
                             ),
@@ -87,14 +87,14 @@ class _CustomerWalletScreenState extends State<CustomerWalletScreen> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
                                 border: Border.all(
-                                  color: const Color(0xFF4E4E4E),
+                                  color: Theme.of(context).colorScheme.onSecondary,
                                 ),
                               ),
-                              child: const SizedBox(
+                              child: SizedBox(
                                 height: 45,
                                 width: double.infinity,
                                 child: Center(
-                                  child: Text("Owned", style: TextStyle(color: Color(0xFF4E4E4E), fontSize: 14, fontWeight: FontWeight.w700)),
+                                  child: Text("Owned", style: TextStyle(color: Theme.of(context).colorScheme.onSecondary, fontSize: 14, fontWeight: FontWeight.w700)),
                                 ),
                               ),
                             ),
@@ -109,20 +109,20 @@ class _CustomerWalletScreenState extends State<CustomerWalletScreen> {
                               tabStateHandler.slideToPage(0);
                             },
                             borderRadius: BorderRadius.circular(20),
-                            splashColor: Colors.white,
+                            splashColor: Theme.of(context).colorScheme.onSecondary,
                             splashFactory: InkSplash.splashFactory,
                             child: Ink(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
                                 border: Border.all(
-                                  color: const Color(0xFF4E4E4E),
+                                  color: Theme.of(context).colorScheme.onSecondary,
                                 ),
                               ),
-                              child: const SizedBox(
+                              child: SizedBox(
                                 height: 45,
                                 width: double.infinity,
                                 child: Center(
-                                  child: Text("Available", style: TextStyle(color: Color(0xFF4E4E4E), fontSize: 14, fontWeight: FontWeight.w700)),
+                                  child: Text("Available", style: TextStyle(color: Theme.of(context).colorScheme.onSecondary, fontSize: 14, fontWeight: FontWeight.w700)),
                                 ),
                               ),
                             ),
@@ -135,18 +135,18 @@ class _CustomerWalletScreenState extends State<CustomerWalletScreen> {
                               tabStateHandler.slideToPage(1);
                             },
                             borderRadius: BorderRadius.circular(20),
-                            splashColor: Colors.white,
+                            splashColor: Theme.of(context).colorScheme.onSecondary,
                             splashFactory: InkSplash.splashFactory,
                             child: Ink(
                               decoration: BoxDecoration(
                                 color: const Color(0xFF6590FF),
                                 borderRadius: BorderRadius.circular(20),
                               ),
-                              child: const SizedBox(
+                              child: SizedBox(
                                 height: 45,
                                 width: double.infinity,
                                 child: Center(
-                                  child: Text("Owned", style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 14, fontWeight: FontWeight.w700)),
+                                  child: Text("Owned", style: TextStyle(color: Theme.of(context).colorScheme.onPrimary, fontSize: 14, fontWeight: FontWeight.w700)),
                                 ),
                               ),
                             ),

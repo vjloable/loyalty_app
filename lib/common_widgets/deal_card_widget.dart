@@ -15,7 +15,7 @@ class _DealCardWidgetState extends State<DealCardWidget> {
       color: Colors.transparent,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
-        side: const BorderSide(color: Color(0xFFE4E4E4)),
+        side: BorderSide(color: Theme.of(context).colorScheme.secondaryContainer),
       ),
       elevation: 2,
       child: InkWell(
@@ -42,9 +42,9 @@ class _DealCardWidgetState extends State<DealCardWidget> {
           children: [
             Ink(
               height: 140,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.secondaryContainer,
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20),
                 ),
@@ -52,9 +52,10 @@ class _DealCardWidgetState extends State<DealCardWidget> {
             ),
             Ink(
               height: 50,
-              decoration: const BoxDecoration(
-                color: Color(0xFFE4E4E4),
-                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
+              decoration: BoxDecoration(
+                border: Border(top: BorderSide(color: Theme.of(context).colorScheme.onSecondary)),
+                color: Theme.of(context).colorScheme.surface,
+                borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
               ),
             ),
           ],

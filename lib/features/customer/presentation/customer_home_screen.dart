@@ -28,21 +28,21 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
         onRefresh: widget.callback,
         displacement: 40,
         edgeOffset: 40,
-        color: const Color(0xFF6590FF),
+        color: Theme.of(context).colorScheme.primary,
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 130),
-              const SizedBox(
+              SizedBox(
                 width: double.infinity,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 0),
+                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
                   child: Text(
                     "HOME",
                     style: TextStyle(
-                      color: Color(0xFF4E4E4E),
+                      color: Theme.of(context).colorScheme.onSecondary,
                       fontSize: 24,
                       fontWeight: FontWeight.w900,
                     ),
@@ -70,20 +70,20 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                       ),
                     ),
                   ),
-                  const Positioned(
-                    right: 10,
+                  Positioned(
+                    right: 5,
                     height: 235,
                     child: RotatedBox(
                       quarterTurns: 3,
                       child: Column(
                         children: [
-                          SizedBox(width: 30, child: Divider(color: Color(0xFF6590FF), thickness: 3.0)),
+                          SizedBox(width: 30, child: Divider(color: Theme.of(context).colorScheme.primary, thickness: 3.0)),
                           Text(
                             "FLIP CARD",
                             style: TextStyle(
-                              color: Color(0xFF4E4E4E),
+                              color: Theme.of(context).colorScheme.onSecondary,
                               fontSize: 14,
-                              fontWeight: FontWeight.w300,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         ],
@@ -98,7 +98,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
                   child: Column(
                     children: [
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Flexible(
@@ -108,7 +108,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                               child: Text(
                                 "LOYALTY METER:",
                                 style: TextStyle(
-                                  color: Color(0xFF4E4E4E),
+                                  color: Theme.of(context).colorScheme.onSecondary,
                                   fontSize: 10,
                                   fontWeight: FontWeight.w900,
                                 ),
@@ -118,12 +118,12 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                           Align(
                             alignment: Alignment.centerRight,
                             child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 1),
+                              padding: const EdgeInsets.symmetric(horizontal: 1),
                               child: Text(
                                   'Earn {x} to maintain your status',
                                   style: TextStyle(
                                     height: 1,
-                                    color: Color(0xFF4E4E4E),
+                                    color: Theme.of(context).colorScheme.onSecondary,
                                     fontSize: 10,
                                     fontWeight: FontWeight.w400,
                                   ),
@@ -147,14 +147,14 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Flexible(
+                        Flexible(
                           fit: FlexFit.loose,
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
                               "Badges",
                               style: TextStyle(
-                                color: Color(0xFF4E4E4E),
+                                color: Theme.of(context).colorScheme.onSecondary,
                                 fontSize: 20,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -167,13 +167,13 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                             alignment: Alignment.centerRight,
                             child: InkWell(
                               onTap: () {},
-                              child: const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 1),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 1),
                                 child: Text(
                                   'See all',
                                   style: TextStyle(
                                     height: 1,
-                                    color: Color(0xFF6590FF),
+                                    color: Theme.of(context).colorScheme.primary,
                                     fontSize: 12,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -194,7 +194,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                   child: DottedBorder(
                     borderType: BorderType.RRect,
                     radius: const Radius.circular(20),
-                    color: const Color(0xFF6590FF),
+                    color: Theme.of(context).colorScheme.primary,
                     child: SizedBox(
                       height: 135,
                       width: double.infinity,
@@ -202,15 +202,15 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                         padding: const EdgeInsets.symmetric(vertical: 10.0),
                         child: Column(
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Text(
                                     "0 of 0 Badges",
                                     style: TextStyle(
-                                      color: Color(0xFF4E4E4E),
+                                      color: Theme.of(context).colorScheme.onSecondary,
                                       fontSize: 10,
                                       fontWeight: FontWeight.w500,
                                     ),
