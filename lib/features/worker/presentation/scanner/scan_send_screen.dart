@@ -38,9 +38,8 @@ class _ScanSendScreenState extends State<ScanSendScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
-
-      backgroundColor: const Color(0xFFF9F9F9),
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -93,14 +92,14 @@ class _ScanSendScreenState extends State<ScanSendScreen> {
                     ),
                   ),
                   const SizedBox(height: 60),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30.0),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
                         "SEND POINTS",
                         style: TextStyle(
-                          color: Color(0xFF515151),
+                          color: Theme.of(context).colorScheme.onSecondary,
                           fontSize: 30,
                           fontWeight: FontWeight.w900,
                         ),
@@ -116,12 +115,12 @@ class _ScanSendScreenState extends State<ScanSendScreen> {
                         key: _sendFormKey,
                         child: Column(
                           children: [
-                            const Align(
+                            Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 "Recipient",
                                 style: TextStyle(
-                                  color: Color(0xFF515151),
+                                  color:Theme.of(context).colorScheme.onSecondary,
                                   fontSize: 18,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -137,18 +136,8 @@ class _ScanSendScreenState extends State<ScanSendScreen> {
                                     Container(
                                       height: 45,
                                       decoration: const BoxDecoration(
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Color(0x00000000),
-                                          ),
-                                          BoxShadow(
-                                            color: Color(0xFFFBFBFB),
-                                            spreadRadius: 0,
-                                            blurRadius: 4,
-                                            offset: Offset(0, 4),
-                                          ),
-                                        ],
-                                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                                        borderRadius: BorderRadius.all(Radius.circular(20),
+                                        ),
                                       ),
                                     ),
                                     SizedBox(
@@ -168,10 +157,9 @@ class _ScanSendScreenState extends State<ScanSendScreen> {
                                           fillColor: const Color(0x80515151),
                                           isCollapsed: false,
                                           contentPadding: const EdgeInsets.fromLTRB(45, 5, 45, 8),
-                                          prefixIconColor: const Color(0xFF515151),
                                           hintText: widget.recipient,
-                                          hintStyle: const TextStyle(
-                                            color: Color(0xFF515151),
+                                          hintStyle: TextStyle(
+                                            color: Theme.of(context).colorScheme.onSecondary.withOpacity(0.5),
                                             fontSize: 14,
                                             fontWeight: FontWeight.w500,
                                           ),
@@ -182,12 +170,12 @@ class _ScanSendScreenState extends State<ScanSendScreen> {
                                 ),
                               ),
                             ),
-                            const Align(
+                            Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 "Amount",
                                 style: TextStyle(
-                                  color: Color(0xFF515151),
+                                  color: Theme.of(context).colorScheme.onSecondary,
                                   fontSize: 18,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -203,18 +191,8 @@ class _ScanSendScreenState extends State<ScanSendScreen> {
                                     Container(
                                       height: 48,
                                       decoration: const BoxDecoration(
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Color(0x40000000),
-                                          ),
-                                          BoxShadow(
-                                            color: Color(0xFFFBFBFB),
-                                            spreadRadius: 0,
-                                            blurRadius: 4,
-                                            offset: Offset(0, 4),
-                                          ),
-                                        ],
-                                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                                          borderRadius: BorderRadius.all(Radius.circular(20),
+                                        ),
                                       ),
                                     ),
                                     SizedBox(
@@ -234,36 +212,35 @@ class _ScanSendScreenState extends State<ScanSendScreen> {
                                         inputFormatters: <TextInputFormatter>[
                                           FilteringTextInputFormatter.digitsOnly
                                         ],
-                                        decoration: const InputDecoration(
+                                        decoration: InputDecoration(
                                           border: OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                                            borderSide: BorderSide(color: Colors.red),
+                                            borderRadius: const BorderRadius.all(Radius.circular(20)),
+                                            borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
                                           ),
                                           errorStyle: TextStyle(
-                                            color: Color(0xFFFF7373),
+                                            color: Theme.of(context).colorScheme.error,
                                             fontSize: 10,
                                             fontWeight: FontWeight.w500,
                                           ),
                                           errorBorder: OutlineInputBorder(
                                             borderRadius: BorderRadius.all(Radius.circular(20)),
-                                            borderSide: BorderSide(color: Color(0xFFFF7373)),
+                                            borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
                                           ),
                                           focusedBorder: OutlineInputBorder(
                                             borderRadius: BorderRadius.all(Radius.circular(20)),
-                                            borderSide: BorderSide(color: Color(0xFFE2E2E2)),
+                                            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                                           ),
                                           enabledBorder: OutlineInputBorder(
                                             borderRadius: BorderRadius.all(Radius.circular(20)),
-                                            borderSide: BorderSide(color: Colors.transparent),
+                                            borderSide: BorderSide(color: Theme.of(context).colorScheme.onSecondary),
                                           ),
                                           filled: true,
-                                          fillColor: Colors.transparent,
+                                          fillColor: Theme.of(context).colorScheme.surface,
                                           isCollapsed: false,
-                                          contentPadding: EdgeInsets.fromLTRB(45, 5, 45, 8),
-                                          prefixIconColor: Color(0xFF515151),
+                                          contentPadding: const EdgeInsets.fromLTRB(45, 5, 45, 8),
                                           hintText: 'Enter amount of points',
                                           hintStyle: TextStyle(
-                                            color: Color(0xFF858585),
+                                            color: Theme.of(context).colorScheme.onSecondary,
                                             fontSize: 14,
                                             fontWeight: FontWeight.w500,
                                           ),
@@ -309,18 +286,18 @@ class _ScanSendScreenState extends State<ScanSendScreen> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF6590FF),
-                      minimumSize: const Size(double.infinity, 80),
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      minimumSize: const Size(double.infinity, 45),
                       surfaceTintColor: Colors.transparent,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
-                          side: const BorderSide(color: Color(0xFF6590FF))
+                          side: BorderSide(color: Theme.of(context).colorScheme.primary)
                       ),
                       elevation: 4,
                     ),
                     child: isValidatingSend
-                        ? const SizedBox(height: 20, width: 20, child: CircularProgressIndicator(color: Color(0xFF6590FF)))
-                        : const Text("SEND", style: TextStyle(color: Color(0xFFF9F9F9), fontSize: 24, fontWeight: FontWeight.w600))
+                        ? SizedBox(height: 20, width: 20, child: CircularProgressIndicator(color: Theme.of(context).colorScheme.primary))
+                        : const Text("SEND", style: TextStyle(color: Color(0xFFF9F9F9), fontSize: 18, fontWeight: FontWeight.w700))
                 ),
               ),
             ),
