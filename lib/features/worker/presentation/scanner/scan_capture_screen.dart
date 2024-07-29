@@ -123,14 +123,14 @@ class _ScanScreenState extends State<ScanScreen> {
                                 child: SizedBox(
                                   height: 26,
                                   width: 13,
-                                  child: CustomIcons.back_arrow(Theme.of(context).colorScheme.onSecondary),
+                                  child: CustomIcons.back_arrow(Colors.white),
                                 ),
                               ),
                             ),
-                            Text(
+                            const Text(
                               "RETURN",
                               style: TextStyle(
-                                color: Theme.of(context).colorScheme.onSecondary,
+                                color: Colors.white,
                                 fontSize: 18,
                                 fontWeight: FontWeight.w900,
                               ),
