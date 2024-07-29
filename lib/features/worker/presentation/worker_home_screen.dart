@@ -41,10 +41,10 @@ class _WorkerHomeScreenState extends State<WorkerHomeScreen> {
                   children: [
                     Row(
                       children: [
-                        const Text(
+                        Text(
                           "WORKER",
                           style: TextStyle(
-                            color: Color(0xFF4E4E4E),
+                            color: Theme.of(context).colorScheme.onSecondary,
                             fontSize: 24,
                             fontWeight: FontWeight.w900,
                           ),
@@ -52,8 +52,8 @@ class _WorkerHomeScreenState extends State<WorkerHomeScreen> {
                         const SizedBox(width: 8),
                         Text(
                           "( ${widget.worker.branch??"Unassigned"} )",
-                          style: const TextStyle(
-                            color: Color(0xFF4E4E4E),
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.onSecondary,
                             fontSize: 12,
                             fontWeight: FontWeight.w500,
                           ),
@@ -62,8 +62,8 @@ class _WorkerHomeScreenState extends State<WorkerHomeScreen> {
                     ),
                     Text(
                       widget.worker.name??"",
-                      style: const TextStyle(
-                        color: Color(0xFF4E4E4E),
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSecondary,
                         fontSize: 16,
                         fontWeight: FontWeight.w300,
                       ),
@@ -73,10 +73,10 @@ class _WorkerHomeScreenState extends State<WorkerHomeScreen> {
               ),
             ),
             const SizedBox(height: 50),
-            const SizedBox(
+            SizedBox(
               width: double.infinity,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 0),
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
                 child: SizedBox(
                   height: 30,
                   child: Row(
@@ -89,7 +89,7 @@ class _WorkerHomeScreenState extends State<WorkerHomeScreen> {
                           child: Text(
                             "Actions",
                             style: TextStyle(
-                              color: Color(0xFF4E4E4E),
+                              color: Theme.of(context).colorScheme.onSecondary,
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
                             ),
@@ -111,16 +111,16 @@ class _WorkerHomeScreenState extends State<WorkerHomeScreen> {
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ScanScreen(),));
                       },
-                      backgroundColor: const Color(0xFFFFFFFF),
-                      child: const Text("SCAN", style: TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700)),
+                      backgroundColor: Theme.of(context).colorScheme.surface,
+                      child: Text("SCAN", style: TextStyle(color: Theme.of(context).colorScheme.onSecondary, fontSize: 14, fontWeight: FontWeight.w700)),
                     ),
                   ),
                   const SizedBox(width: 10,),
                   Expanded(
                     child: RoundedElevatedButton(
                       onPressed: () {},
-                      backgroundColor: const Color(0xFFFFFFFF),
-                      child: const Text("GIFT", style: TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700)),
+                      backgroundColor: Theme.of(context).colorScheme.surface,
+                      child: Text("GIFT", style: TextStyle(color: Theme.of(context).colorScheme.onSecondary, fontSize: 14, fontWeight: FontWeight.w700)),
                     ),
                   ),
                 ],
