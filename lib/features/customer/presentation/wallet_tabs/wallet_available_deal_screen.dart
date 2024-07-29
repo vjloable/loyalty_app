@@ -43,7 +43,7 @@ class _WalletAvailableDealScreenState extends State<WalletAvailableDealScreen> {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(8).add(const EdgeInsets.only(right: 3)),
-                            child: CustomIcons.back_arrow_dark,
+                            child: CustomIcons.back_arrow(Theme.of(context).colorScheme.primary),
                           ),
                         ),
                       ),
@@ -116,7 +116,7 @@ class _WalletAvailableDealScreenState extends State<WalletAvailableDealScreen> {
                           SizedBox(
                             height: 25,
                             width: 25,
-                            child: CustomIcons.mini_location,
+                            child: CustomIcons.mini_location(Theme.of(context).colorScheme.onSecondary),
                           ),
                           const SizedBox(width: 5),
                           const Text(
@@ -175,7 +175,7 @@ class _WalletAvailableDealScreenState extends State<WalletAvailableDealScreen> {
                                 SizedBox(
                                   height: 25,
                                   width: 25,
-                                  child: CustomIcons.mini_time,
+                                  child: CustomIcons.mini_time(Theme.of(context).colorScheme.onSecondary),
                                 ),
                                 const SizedBox(width: 5),
                                 const Expanded(
@@ -203,7 +203,7 @@ class _WalletAvailableDealScreenState extends State<WalletAvailableDealScreen> {
                                 SizedBox(
                                   height: 25,
                                   width: 25,
-                                  child: CustomIcons.mini_date,
+                                  child: CustomIcons.mini_date(Theme.of(context).colorScheme.onSecondary),
                                 ),
                                 const SizedBox(width: 5),
                                 const Expanded(
@@ -255,7 +255,7 @@ class _WalletAvailableDealScreenState extends State<WalletAvailableDealScreen> {
                               SizedBox(
                                 height: 25,
                                 width: 25,
-                                child: CustomIcons.mini_check,
+                                child: CustomIcons.mini_check(Theme.of(context).colorScheme.onSecondary),
                               ),
                               const SizedBox(width: 5),
                               const Expanded(
@@ -279,7 +279,7 @@ class _WalletAvailableDealScreenState extends State<WalletAvailableDealScreen> {
                               SizedBox(
                                 height: 25,
                                 width: 25,
-                                child: CustomIcons.mini_check,
+                                child: CustomIcons.mini_check(Theme.of(context).colorScheme.onSecondary),
                               ),
                               const SizedBox(width: 5),
                               const Expanded(

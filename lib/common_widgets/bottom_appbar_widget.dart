@@ -12,9 +12,9 @@ class CustomBottomAppBar extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            decoration: const BoxDecoration(
-                color: Color(0xFFFFFFFF),
-                border: Border(top: BorderSide(color: Color(0xFFE2E2E2)))
+            decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.surface,
+                border: Border(top: BorderSide(color: Theme.of(context).colorScheme.outlineVariant.withOpacity(0.25)))
             ),
             height: 70,
           ),
@@ -34,7 +34,7 @@ class CustomBottomAppBar extends StatelessWidget {
                       child: AnimatedBuilder(
                         animation: pageStateHandler,
                         builder: (context, child) {
-                          return pageStateHandler.currentPage == 0 ? CustomIcons.home_active : CustomIcons.home;
+                          return pageStateHandler.currentPage == 0 ? CustomIcons.home(Theme.of(context).colorScheme.primary) : CustomIcons.home(Theme.of(context).colorScheme.onSecondary);
                         },
                       ),
                     ),
@@ -52,7 +52,7 @@ class CustomBottomAppBar extends StatelessWidget {
                       child: AnimatedBuilder(
                         animation: pageStateHandler,
                         builder: (context, child) {
-                          return pageStateHandler.currentPage == 1 ? CustomIcons.wallet_active : CustomIcons.wallet;
+                          return pageStateHandler.currentPage == 1 ? CustomIcons.wallet(Theme.of(context).colorScheme.primary) : CustomIcons.wallet(Theme.of(context).colorScheme.onSecondary);
                         },
                       ),
                     ),
@@ -69,7 +69,7 @@ class CustomBottomAppBar extends StatelessWidget {
                       child: AnimatedBuilder(
                         animation: pageStateHandler,
                         builder: (context, child) {
-                          return pageStateHandler.currentPage == 2 ? CustomIcons.discover_active : CustomIcons.discover;
+                          return pageStateHandler.currentPage == 2 ? CustomIcons.discover(Theme.of(context).colorScheme.primary) : CustomIcons.discover(Theme.of(context).colorScheme.onSecondary);
                         },
                       ),
                     ),
@@ -86,7 +86,7 @@ class CustomBottomAppBar extends StatelessWidget {
                       child: AnimatedBuilder(
                         animation: pageStateHandler,
                         builder: (context, child) {
-                          return pageStateHandler.currentPage == 3 ? CustomIcons.profile_active : CustomIcons.profile;
+                          return pageStateHandler.currentPage == 3 ? CustomIcons.profile(Theme.of(context).colorScheme.primary) : CustomIcons.profile(Theme.of(context).colorScheme.onSecondary);
                         },
                       ),
                     ),
