@@ -21,3 +21,19 @@ class TabStateHandler extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+class FlipSwitchStateHandler extends ChangeNotifier {
+  bool isFlipSwitchedOn = false;
+
+  bool get getFlipState => isFlipSwitchedOn;
+
+  void setFlipState(bool state) {
+    isFlipSwitchedOn = state;
+    notifyListeners();
+  }
+
+  void flipTheSwitch() {
+    isFlipSwitchedOn = !isFlipSwitchedOn;
+    notifyListeners();
+  }
+}
