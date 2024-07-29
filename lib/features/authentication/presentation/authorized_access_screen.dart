@@ -46,7 +46,7 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                         child: SizedBox(
                           height: 26,
                           width: 13,
-                          child: CustomIcons.back_arrow_dark,
+                          child: CustomIcons.back_arrow(Theme.of(context).colorScheme.onSecondary),
                         ),
                       ),
                     ),
@@ -54,16 +54,16 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              const SizedBox(
+              SizedBox(
                 height: 60,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       "Authorized Access",
                       style: TextStyle(
-                        color: Color(0xFFFF7373),
+                        color: Theme.of(context).colorScheme.error,
                         fontSize: 20,
                         fontWeight: FontWeight.w900,
                       ),
@@ -75,7 +75,8 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                   ? Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30.0),
                     child: RoundedElevatedButton(
-                      backgroundColor: const Color(0xFFFFFFFF),
+                      backgroundColor: Theme.of(context).colorScheme.surface,
+                      borderColor: widget.userModel.permissionLevel == 4 ? Colors.transparent : Theme.of(context).colorScheme.error,
                       onPressed: widget.userModel.permissionLevel == 4 ? null : () {
                         UserRepository.setPermissionLevel(widget.userModel, 4).then((result) {
                           if (result == "Success") {
@@ -85,7 +86,7 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                           }
                         });
                       },
-                      child: const Text("Administrator", style: TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700)),
+                      child: Text("Administrator", style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 14, fontWeight: FontWeight.w700)),
                     ),
                   )
                   : Container(),
@@ -94,7 +95,8 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                   ? Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30.0),
                     child: RoundedElevatedButton(
-                      backgroundColor: const Color(0xFFFFFFFF),
+                      backgroundColor: Theme.of(context).colorScheme.surface,
+                      borderColor: widget.userModel.permissionLevel == 3 ? Colors.transparent : Theme.of(context).colorScheme.error,
                       onPressed: widget.userModel.permissionLevel == 3 ? null : () {
                         UserRepository.setPermissionLevel(widget.userModel, 3).then((result) {
                           if (result == "Success") {
@@ -104,7 +106,7 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                           }
                         });
                       },
-                      child: const Text("Owner", style: TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700)),
+                      child: Text("Owner", style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 14, fontWeight: FontWeight.w700)),
                     ),
                   )
                   : Container(),
@@ -113,7 +115,8 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                   ? Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30.0),
                     child: RoundedElevatedButton(
-                      backgroundColor: const Color(0xFFFFFFFF),
+                      backgroundColor: Theme.of(context).colorScheme.surface,
+                      borderColor: widget.userModel.permissionLevel == 2 ? Colors.transparent : Theme.of(context).colorScheme.error,
                       onPressed: widget.userModel.permissionLevel == 2 ? null : () {
                         UserRepository.setPermissionLevel(widget.userModel, 2).then((result) {
                           if (result == "Success") {
@@ -123,7 +126,7 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                           }
                         });
                       },
-                      child: const Text("Manager", style: TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700)),
+                      child: Text("Manager", style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 14, fontWeight: FontWeight.w700)),
                     ),
                   )
                   : Container(),
@@ -132,7 +135,8 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                   ? Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30.0),
                     child: RoundedElevatedButton(
-                      backgroundColor: const Color(0xFFFFFFFF),
+                      backgroundColor: Theme.of(context).colorScheme.surface,
+                      borderColor: widget.userModel.permissionLevel == 1 ? Colors.transparent : Theme.of(context).colorScheme.error,
                       onPressed: widget.userModel.permissionLevel == 1 ? null : () {
                         UserRepository.setPermissionLevel(widget.userModel, 1).then((result) {
                           if (result == "Success") {
@@ -142,7 +146,7 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                           }
                         });
                       },
-                      child: const Text("Worker", style: TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700)),
+                      child: Text("Worker", style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 14, fontWeight: FontWeight.w700)),
                     ),
                   )
                   : Container(),
@@ -151,7 +155,8 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                   ? Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
                 child: RoundedElevatedButton(
-                  backgroundColor: const Color(0xFFFFFFFF),
+                  backgroundColor: Theme.of(context).colorScheme.surface,
+                  borderColor: widget.userModel.permissionLevel == 0 ? Colors.transparent : Theme.of(context).colorScheme.error,
                   onPressed: widget.userModel.permissionLevel == 0 ? null : () {
                     UserRepository.setPermissionLevel(widget.userModel, 0).then((result) {
                       if (result == "Success") {
@@ -161,7 +166,7 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                       }
                     });
                   },
-                  child: const Text("Customer", style: TextStyle(color: Color(0xFF515151), fontSize: 14, fontWeight: FontWeight.w700)),
+                  child: Text("Customer", style:TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 14, fontWeight: FontWeight.w700)),
                 ),
               )
                   : Container(),
