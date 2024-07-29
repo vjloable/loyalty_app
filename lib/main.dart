@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:loyalty_app/utils/custom_colors.dart';
 import 'features/authentication/application/authentication_service.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
@@ -12,16 +13,31 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
+  static final ValueNotifier<ThemeMode> themeNotifier = ValueNotifier(ThemeMode.light);
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Loyalty App',
-      theme: ThemeData(fontFamily: 'Poppins', colorSchemeSeed: const Color(0xFF6590FF)),
-      debugShowCheckedModeBanner: false,
-      home: AuthenticationService.handleAuthState(),
+    return ValueListenableBuilder(
+        valueListenable: themeNotifier,
+      builder: (_, ThemeMode currentMode, __) {
+        return MaterialApp(
+          title: 'Loyalty App',
+          theme: ThemeData(
+            useMaterial3: true,
+            fontFamily: 'Poppins',
+            colorScheme: CustomColors.lightmode,
+          ),
+          darkTheme: ThemeData(
+            useMaterial3: true,
+            fontFamily: 'Poppins',
+            colorScheme: CustomColors.darkmode,
+          ),
+          themeMode: currentMode,
+          debugShowCheckedModeBanner: false,
+          home: AuthenticationService.handleAuthState(),
+        );
+      }
     );
   }
 }
