@@ -17,7 +17,16 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 4,
       child: Container(
         height: preferredSize.height,
-        color: const Color(0xFFFFFFFF),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Theme.of(context).colorScheme.tertiary,
+              Theme.of(context).colorScheme.tertiaryContainer,
+            ],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          ),
+        ),
         alignment: Alignment.center,
         child: Align(
           alignment: Alignment.bottomCenter,
