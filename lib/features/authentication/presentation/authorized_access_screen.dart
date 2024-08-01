@@ -43,10 +43,13 @@ class _AuthorizedAccessScreenState extends State<AuthorizedAccessScreen> {
                       child: CircleAvatar(
                         radius: 24,
                         backgroundColor: Colors.transparent,
-                        child: SizedBox(
-                          height: 26,
-                          width: 13,
-                          child: CustomIcons.back_arrow(Theme.of(context).colorScheme.onSecondary),
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 3.0),
+                          child: SizedBox(
+                            height: 26,
+                            width: 13,
+                            child: CustomIcons.back_arrow(Theme.of(context).colorScheme.onSecondary),
+                          ),
                         ),
                       ),
                     ),
