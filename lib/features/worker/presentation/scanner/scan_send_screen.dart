@@ -154,7 +154,7 @@ class _ScanSendScreenState extends State<ScanSendScreen> {
                                             borderSide: BorderSide(color: Color(0x00000000)),
                                           ),
                                           filled: true,
-                                          fillColor: const Color(0x80515151),
+                                          fillColor: Theme.of(context).colorScheme.onSecondary.withOpacity(0.1),
                                           isCollapsed: false,
                                           contentPadding: const EdgeInsets.fromLTRB(45, 5, 45, 8),
                                           hintText: widget.recipient,
@@ -223,15 +223,15 @@ class _ScanSendScreenState extends State<ScanSendScreen> {
                                             fontWeight: FontWeight.w500,
                                           ),
                                           errorBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                                            borderRadius: const BorderRadius.all(Radius.circular(20)),
                                             borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                                            borderRadius: const BorderRadius.all(Radius.circular(20)),
                                             borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                                           ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                                            borderRadius: const BorderRadius.all(Radius.circular(20)),
                                             borderSide: BorderSide(color: Theme.of(context).colorScheme.onSecondary),
                                           ),
                                           filled: true,
