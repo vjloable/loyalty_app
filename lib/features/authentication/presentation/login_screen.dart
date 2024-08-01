@@ -48,9 +48,9 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(bottom: 60),
-                child: FittedBox(
+              Padding(
+                padding: const EdgeInsets.only(bottom: 60).add(const EdgeInsets.symmetric(horizontal: 30)),
+                child: const FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(
                     "WakBox",
@@ -81,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   decoration: const BoxDecoration(
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Color(0x40000000),
+                                        color: Color(0x20000000),
                                       ),
                                       BoxShadow(
                                         color: Color(0xFFFBFBFB),
@@ -122,6 +122,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                         borderRadius: BorderRadius.all(Radius.circular(40)),
                                         borderSide: BorderSide(color: Color(0xFFE2E2E2)),
                                       ),
+                                      enabledBorder: const OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(Radius.circular(40)),
+                                        borderSide: BorderSide(color: Color(0xFFE2E2E2)),
+                                      ),
                                       isCollapsed: false,
                                       contentPadding: const EdgeInsets.fromLTRB(0, 5, 45, 8),
                                       prefixIcon: SizedBox(
@@ -157,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   decoration: const BoxDecoration(
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Color(0x40000000),
+                                        color: Color(0x20000000),
                                       ),
                                       BoxShadow(
                                         color: Color(0xFFFBFBFB),
@@ -194,6 +198,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                         borderSide: BorderSide(color: Color(0xFFFF7373)),
                                       ),
                                       focusedBorder: const OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(Radius.circular(40)),
+                                        borderSide: BorderSide(color: Color(0xFFE2E2E2)),
+                                      ),
+                                      enabledBorder: const OutlineInputBorder(
                                         borderRadius: BorderRadius.all(Radius.circular(40)),
                                         borderSide: BorderSide(color: Color(0xFFE2E2E2)),
                                       ),
