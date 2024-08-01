@@ -37,6 +37,7 @@ class _RoundedElevatedButtonState extends State<RoundedElevatedButton> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),
+            overlayColor: Theme.of(context).colorScheme.onSecondary,
           ),
           child: widget.child ?? const SizedBox()
       ),
