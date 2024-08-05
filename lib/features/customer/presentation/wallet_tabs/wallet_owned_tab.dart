@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:loyalty_app/features/customer/presentation/wallet_tabs/wallet_available_deal_screen.dart';
 
+import '../../../../common_widgets/deal_card_widget.dart';
 import '../../../../utils/graphics.dart';
 
 class WalletOwnedTab extends StatefulWidget {
@@ -40,6 +42,13 @@ class _WalletOwnedTabState extends State<WalletOwnedTab> {
                 ],
               ),
             ),
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 30),
+          child: DealCardWidget(
+            destination: WalletAvailableDealScreen(),
+            hasButtons: true,
           ),
         ),
         SizedBox(
