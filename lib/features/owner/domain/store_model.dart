@@ -6,6 +6,7 @@ class Store {
   final String location;
   final String? owner;
   final DateTime? addedAt;
+  final DateTime? modifiedAt;
   final List<String>? managers;
 
   Store({
@@ -14,6 +15,7 @@ class Store {
     required this.location,
     this.owner,
     this.addedAt,
+    this.modifiedAt,
     this.managers,
   });
 
@@ -27,7 +29,8 @@ class Store {
       code: data?['code'] ?? "",
       location: data?['location'] ?? "",
       owner: data?['owner'] ?? "",
-      addedAt: (data?['creation'] as Timestamp).toDate(),
+      addedAt: data?['addedAt'] == null ? null : ((data?['addedAt'] as Timestamp).toDate()),
+      modifiedAt: data?['modifiedAt'] == null ? null : ((data?['modifiedAt'] as Timestamp).toDate()),
       managers: data?['managers'] is Iterable ? List.from(data?['managers']) : null,
     );
   }
@@ -39,7 +42,8 @@ class Store {
       "code": code,
       "location": location,
       if (owner != null) "owner": owner else "owner": "",
-      if (addedAt != null) "creation" : addedAt else "creation" : serverTimestamp,
+      if (addedAt != null) "addedAt" : addedAt else "addedAt" : serverTimestamp,
+      "modifiedAt" : serverTimestamp,
       "managers": managers,
     };
   }
