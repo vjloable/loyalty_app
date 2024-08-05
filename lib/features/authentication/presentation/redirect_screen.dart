@@ -100,14 +100,14 @@ class _RedirectScreenState extends State<RedirectScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.white,
+    return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       body: Center(
         child: SizedBox(
           height: 40,
           width: 40,
           child: CircularProgressIndicator(
-            color: Color(0xFF6590FF),
+            color: Theme.of(context).colorScheme.primary,
             value: null,
           ),
         ),
