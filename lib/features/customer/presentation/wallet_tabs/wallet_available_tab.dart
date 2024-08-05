@@ -19,7 +19,7 @@ class _WalletAvailableTabState extends State<WalletAvailableTab> {
         SizedBox(
           width: double.infinity,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             child: SizedBox(
               height: 50,
               child: Row(
@@ -48,6 +48,7 @@ class _WalletAvailableTabState extends State<WalletAvailableTab> {
           padding: EdgeInsets.symmetric(horizontal: 30),
           child: DealCardWidget(
             destination: WalletAvailableDealScreen(),
+            hasButtons: false,
           ),
         ),
         SizedBox(
