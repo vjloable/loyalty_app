@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loyalty_app/features/owner/presentation/stores/store_list_screen.dart';
 
 import '../../../../utils/custom_icons.dart';
 import '../../data/store_repository.dart';
@@ -23,15 +24,15 @@ class _StoreAddScreenState extends State<StoreAddScreen> {
   void showValidationResponse(String message) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(message, style: const TextStyle(color: Color(0xFFFF7373))),
+        content: Text(message, style: TextStyle(color: Theme.of(context).colorScheme.error)),
         behavior: SnackBarBehavior.floating,
         dismissDirection: DismissDirection.none,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         margin: EdgeInsets.only(
-            bottom: MediaQuery.of(context).size.height - 100,
-            right: 20,
-            left: 20
+          bottom: MediaQuery.of(context).size.height - 100,
+          right: 20,
+          left: 20,
         ),
-        backgroundColor: const Color(0x80515151),
       ),
     );
   }
@@ -310,6 +311,8 @@ class _StoreAddScreenState extends State<StoreAddScreen> {
                     } else if (validation == "Success") {
                       Future.delayed(const Duration(milliseconds: 100), () {
                         Navigator.of(context).pop();
+                        Navigator.of(context).pop();
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => StoreListScreen(owner: widget.owner)));
                       });
                     }
                     setState(() {
@@ -318,7 +321,7 @@ class _StoreAddScreenState extends State<StoreAddScreen> {
                   },
                   child: isValidatingAdd
                       ? SizedBox(height: 20, width: 20, child: CircularProgressIndicator(color: Theme.of(context).colorScheme.primary))
-                      : const Text("ADD", style: TextStyle(color: Color(0xFFF9F9F9), fontSize: 18, fontWeight: FontWeight.w700)),
+                      : Text("ADD", style: TextStyle(color: Theme.of(context).colorScheme.surface, fontSize: 18, fontWeight: FontWeight.w700)),
                 ),
               ),
             ),
