@@ -52,7 +52,7 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          "( ${widget.manager.branches??"Unassigned"} )",
+                          "( ${widget.manager.currentStore??"Unassigned"} )",
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.onSecondary,
                             fontSize: 12,
@@ -62,7 +62,7 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                       ],
                     ),
                     Text(
-                      widget.manager.name??"",
+                      widget.manager.name,
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.onSecondary,
                         fontSize: 16,
@@ -128,35 +128,6 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            SizedBox(
-              width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 0),
-                child: SizedBox(
-                  height: 30,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        fit: FlexFit.loose,
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            "Manage",
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.onSecondary,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 5),
           ]),
         ),
       ),
