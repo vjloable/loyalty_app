@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomIcons{
-  static Widget email = SvgPicture.asset("icons/Icon-Email.svg");
-  static Widget password = SvgPicture.asset("icons/Icon-Password.svg");
-  static Widget mini_calendar = SvgPicture.asset("icons/Icon-MiniCalendar.svg");
+  static Widget email(Color color) => SvgPicture.asset("icons/Icon-Email.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
+  static Widget password(Color color) => SvgPicture.asset("icons/Icon-Password.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
 
   static Widget home(Color color) => SvgPicture.asset("icons/Icon-Home.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
   static Widget wallet(Color color) =>  SvgPicture.asset("icons/Icon-Wallet.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
@@ -29,4 +28,10 @@ class CustomIcons{
   static Widget mini_time(Color color) =>  SvgPicture.asset("icons/deal_card/Icon-Time.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
   static Widget mini_date(Color color) =>  SvgPicture.asset("icons/deal_card/Icon-Date.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
   static Widget mini_check(Color color) =>  SvgPicture.asset("icons/deal_card/Icon-Check.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
+
+  static Widget return_arrow(Color color) =>  SvgPicture.asset("icons/Icon-Return.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
+  static Widget plus(Color color) =>  SvgPicture.asset("icons/Icon-Plus.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
+  static Widget search(Color color) =>  SvgPicture.asset("icons/Icon-Search.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
+  static Widget long_arrow(Color color) =>  SvgPicture.asset("icons/Icon-Long-Arrow.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
+  static Widget location(Color color) =>  SvgPicture.asset("icons/Icon-Location.svg", colorFilter: ColorFilter.mode(color, BlendMode.srcIn));
 }
