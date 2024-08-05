@@ -5,6 +5,8 @@ class Illustration {
   static Widget authorized_access_hero = SvgPicture.asset("graphics/illustrations/AuthorizedAccessHero.svg", fit: BoxFit.fitWidth);
   static Widget no_available_deals = SvgPicture.asset("graphics/illustrations/NoAvailableDeals.svg", fit: BoxFit.fitWidth);
   static Widget no_owned_deals = SvgPicture.asset("graphics/illustrations/NoOwnedDeals.svg", fit: BoxFit.fitWidth);
+  static Widget no_stores = SvgPicture.asset("graphics/illustrations/NoStores.svg", fit: BoxFit.fitWidth);
+  static Widget no_managers = SvgPicture.asset("graphics/illustrations/NoManagers.svg", fit: BoxFit.fitWidth);
 }
 
 class Cards{
