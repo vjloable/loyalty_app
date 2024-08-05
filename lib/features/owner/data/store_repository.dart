@@ -12,7 +12,6 @@ class StoreRepository {
       location: location,
       owner: owner,
     );
-
     return _firebaseFirestore
       .collection("stores")
       .withConverter(
@@ -34,5 +33,16 @@ class StoreRepository {
               return "Error";
             });
       });
+  }
+
+  static Future<List<QueryDocumentSnapshot<Store>>> getStoreList() {
+    return _firebaseFirestore
+        .collection("stores")
+        .withConverter(fromFirestore: Store.fromFirestore, toFirestore: (Store store, options) => store.toFirestore(),)
+        .get()
+        .then((QuerySnapshot<Store> querySnapshot) {
+          return querySnapshot.docs.cast();
+        },
+    );
   }
 }
