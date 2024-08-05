@@ -34,4 +34,15 @@ class ManagerRepository {
     Manager? manager = (await userManagerDocRef.get()).data();
     return manager;
   }
+
+  static Future<List<QueryDocumentSnapshot<Manager>>> getManagerList() {
+    return _firebaseFirestore
+        .collection("managers")
+        .withConverter(fromFirestore: Manager.fromFirestore, toFirestore: (Manager manager, options) => manager.toFirestore(),)
+        .get()
+        .then((QuerySnapshot<Manager> querySnapshot) {
+      return querySnapshot.docs.cast();
+    },
+    );
+  }
 }
