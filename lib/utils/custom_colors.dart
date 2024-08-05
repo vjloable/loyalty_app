@@ -9,6 +9,9 @@ class CustomColors {
   static MaterialColor lightBody = createMaterialColor(const Color(0xFFFFFFFF));
   static MaterialColor lightCard = createMaterialColor(const Color(0xFFE4E4E4));
   static MaterialColor lightPremium = createMaterialColor(const Color(0xFFFFFFFF));
+  static MaterialColor lightItem = createMaterialColor(const Color(0x48D1E3FF));
+  static MaterialColor lightItemText = createMaterialColor(const Color(0xFF6B6BFF));
+  static MaterialColor lightItemSubText = createMaterialColor(const Color(0xFF3D3D86));
   static MaterialColor darkText = createMaterialColor(const Color(0xFF959595));
   static MaterialColor darkBackground = createMaterialColor(const Color(0xFF171717));
   static MaterialColor darkAccentBackground = createMaterialColor(const Color(0xFF4D4040));
@@ -16,6 +19,9 @@ class CustomColors {
   static MaterialColor darkPremiumLeft = createMaterialColor(const Color(0xFF171717));
   static MaterialColor darkPremiumRight = createMaterialColor(const Color(0xFF282828));
   static MaterialColor darkCard = createMaterialColor(const Color(0xFF1D1D1D));
+  static MaterialColor darkItem = createMaterialColor(const Color(0x48303748));
+  static MaterialColor darkItemText = createMaterialColor(const Color(0xFFA4A4CF));
+  static MaterialColor darkItemSubText = createMaterialColor(const Color(0xFFEDEDFF));
 
   static ColorScheme lightmode = ColorScheme(
     brightness: Brightness.light,
@@ -32,6 +38,9 @@ class CustomColors {
     outlineVariant: darkText,
     outline: primary,
     secondaryContainer: lightCard,
+    surfaceContainer: lightItem,
+    surfaceContainerHigh: lightItemText,
+    surfaceContainerLow: lightItemSubText,
   );
 
   static ColorScheme darkmode = ColorScheme(
@@ -49,6 +58,9 @@ class CustomColors {
     outlineVariant: lightText,
     outline: primary,
     secondaryContainer: darkCard,
+    surfaceContainer: darkItem,
+    surfaceContainerHigh: darkItemText,
+    surfaceContainerLow: darkItemSubText,
   );
 }
 
