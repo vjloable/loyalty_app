@@ -101,7 +101,7 @@ class _WorkerHomeScreenState extends State<WorkerHomeScreen> {
                 ),
               ),
             ),
-            const SizedBox(height: 5),
+            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: Row(
