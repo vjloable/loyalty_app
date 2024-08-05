@@ -1,14 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Manager {
-  final String? name;
+  final String name;
   final String uid;
-  final List<String>? branches;
+  final String? currentStore;
+  final List<String>? previousStores;
 
   Manager({
-    this.name = "",
+    required this.name,
     required this.uid,
-    this.branches,
+    this.currentStore,
+    this.previousStores,
   });
 
   factory Manager.fromFirestore(
@@ -19,15 +21,18 @@ class Manager {
     return Manager(
       name: data?['name'] ?? "",
       uid: data?['uid'],
-      branches: data?['branches'] is Iterable ? List.from(data?['branches']) : null
+      currentStore: data?['currentStore'],
+      previousStores: data?['previousStores'] is Iterable ? List.from(data?['previousStores']) : null,
     );
   }
 
   Map<String, dynamic> toFirestore() {
+    // var serverTimestamp = FieldValue.serverTimestamp();
     return {
-      if (name != null) "name": name else "name": "",
+      "name": name,
       "uid": uid,
-      "branches": branches,
+      "currentStore": currentStore,
+      "previousStores": previousStores,
     };
   }
 }
