@@ -56,7 +56,8 @@ class CustomerRepository {
     return _firebaseFirestore.runTransaction((transaction) async {
       final snapshot = await transaction.get(customerDocRef);
       final newPoints = snapshot.get("points") + points;
-      transaction.update(customerDocRef, {"points": newPoints});
+      final newScanCounts = snapshot.get("scan_count") + 1;
+      transaction.update(customerDocRef, {"points": newPoints, "scan_count": newScanCounts});
     }).then((value) {
       print("DocumentSnapshot successfully updated!");
       return "Success";
