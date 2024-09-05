@@ -165,8 +165,8 @@ class _CustomerWalletScreenState extends State<CustomerWalletScreen> {
                 return AnimatedSwitcher(
                   duration: const Duration(milliseconds: 400),
                   child: tabStateHandler.tab == 0
-                      ? const WalletAvailableTab()
-                      : const WalletOwnedTab(),
+                      ? const WalletAvailableTab(isDisable: false)
+                      : const WalletOwnedTab(isDisable: false),
                 );
               }
             ),
