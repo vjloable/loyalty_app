@@ -1,4 +1,3 @@
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
 class DealCardWidget extends StatefulWidget {
@@ -54,7 +53,7 @@ class _DealCardWidgetState extends State<DealCardWidget> {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: FittedBox(
                     fit: BoxFit.fitWidth,
                     child: Column(
