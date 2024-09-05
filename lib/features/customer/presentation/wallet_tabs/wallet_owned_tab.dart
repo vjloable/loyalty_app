@@ -5,7 +5,8 @@ import '../../../../common_widgets/deal_card_widget.dart';
 import '../../../../utils/graphics.dart';
 
 class WalletOwnedTab extends StatefulWidget {
-  const WalletOwnedTab({super.key});
+  final bool isDisable;
+  const WalletOwnedTab({super.key, required this.isDisable});
 
   @override
   State<WalletOwnedTab> createState() => _WalletOwnedTabState();
@@ -44,10 +45,10 @@ class _WalletOwnedTabState extends State<WalletOwnedTab> {
             ),
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
           child: DealCardWidget(
-            destination: WalletAvailableDealScreen(),
+            destination: WalletAvailableDealScreen(isDisable: widget.isDisable),
             hasButtons: true,
           ),
         ),

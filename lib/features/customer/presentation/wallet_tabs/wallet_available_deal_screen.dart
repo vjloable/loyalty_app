@@ -4,7 +4,8 @@ import 'package:loyalty_app/common_widgets/rounded_elevated_button.dart';
 import 'package:loyalty_app/utils/custom_icons.dart';
 
 class WalletAvailableDealScreen extends StatefulWidget {
-  const WalletAvailableDealScreen({super.key});
+  final bool isDisable;
+  const WalletAvailableDealScreen({super.key, required this.isDisable});
 
   @override
   State<WalletAvailableDealScreen> createState() => _WalletAvailableDealScreenState();
@@ -388,7 +389,7 @@ class _WalletAvailableDealScreenState extends State<WalletAvailableDealScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 28),
             child: RoundedElevatedButton(
               backgroundColor: Theme.of(context).colorScheme.primary,
-              onPressed: () {},
+              onPressed: widget.isDisable ? null : () {},
               child: Text(
                 "REDEEM",
                 style: TextStyle(

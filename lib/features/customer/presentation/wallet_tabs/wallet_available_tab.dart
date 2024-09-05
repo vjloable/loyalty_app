@@ -5,7 +5,8 @@ import 'package:loyalty_app/features/customer/presentation/wallet_tabs/wallet_av
 import '../../../../utils/graphics.dart';
 
 class WalletAvailableTab extends StatefulWidget {
-  const WalletAvailableTab({super.key});
+  final bool isDisable;
+  const WalletAvailableTab({super.key, required this.isDisable});
 
   @override
   State<WalletAvailableTab> createState() => _WalletAvailableTabState();
@@ -44,10 +45,10 @@ class _WalletAvailableTabState extends State<WalletAvailableTab> {
             ),
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
           child: DealCardWidget(
-            destination: WalletAvailableDealScreen(),
+            destination: WalletAvailableDealScreen(isDisable: widget.isDisable),
             hasButtons: false,
           ),
         ),
