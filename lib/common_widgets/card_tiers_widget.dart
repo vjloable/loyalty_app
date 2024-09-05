@@ -79,7 +79,7 @@ class _CardTierState extends State<CardTier> {
                       ),
                     ),
                     const Text(
-                      'Loyalty Points',
+                      'Wak Points',
                       style: TextStyle(
                         color: Color(0xFF515151),
                         fontWeight: FontWeight.w500,
