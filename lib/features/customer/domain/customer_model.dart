@@ -6,6 +6,7 @@ class Customer {
   final int points;
   final int meter;
   final int tier;
+  final int scanCount;
 
   Customer({
     this.name = "",
@@ -13,6 +14,7 @@ class Customer {
     this.points = 0,
     this.meter = 0,
     this.tier = 0,
+    this.scanCount = 0,
   });
 
   factory Customer.fromFirestore(
@@ -26,6 +28,7 @@ class Customer {
       points: data?['points'],
       meter: data?['meter'],
       tier: data?['tier'],
+      scanCount: data?['scan_count'],
     );
   }
 
@@ -36,6 +39,7 @@ class Customer {
       "points": points,
       "meter": meter,
       "tier": tier,
+      "scan_count": scanCount,
     };
   }
 }
