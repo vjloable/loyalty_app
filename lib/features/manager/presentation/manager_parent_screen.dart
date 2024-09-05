@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loyalty_app/features/manager/presentation/manager_wallet_screen.dart';
 
 import '../../../common_widgets/bottom_appbar_widget.dart';
 import '../../../common_widgets/top_appbar_widget.dart';
@@ -47,7 +48,7 @@ class _ManagerParentScreenState extends State<ManagerParentScreen> {
                     return pageStateHandler.currentPage == 0
                         ? ManagerHomeScreen(manager: manager, callback: refreshWorker,)
                         : pageStateHandler.currentPage == 1
-                        ? const Placeholder()
+                        ? ManagerWalletScreen(manager: manager)
                         : pageStateHandler.currentPage == 2
                         ? const Placeholder()
                         : pageStateHandler.currentPage == 3
