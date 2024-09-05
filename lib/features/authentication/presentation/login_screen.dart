@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 border: InputBorder.none,
                                 errorStyle: TextStyle(
                                   color: Theme.of(context).colorScheme.error,
-                                  fontSize: 10,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                 ),
                                 errorBorder: OutlineInputBorder(
@@ -112,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   width: 45,
                                   height: 45,
                                   child: Padding(
-                                    padding: const EdgeInsets.all(15.0),
+                                    padding: const EdgeInsets.all(12.0),
                                     child: CustomIcons.email(Theme.of(context).colorScheme.onSecondary),
                                   ),
                                 ),
